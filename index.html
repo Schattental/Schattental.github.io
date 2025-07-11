@@ -1,55 +1,152 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<title>BALLR_Rainbow</title>
-<meta name="author" content="H.Hawk"/>
-<meta name="publisher" content="H.Hawk with Hyperfury"/>
-<meta name="description" content="A showsite for Rainbow and the BALLR team"/>
-<meta charset="UTF-8"/>
-
-<link rel="stylesheet" href="main.css">
-<link rel="icon" type="image/png" href="favicon.ico">
-<link href="https://fonts.googleapis.com/css?family=Teko&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plasma Physics Calculator Hub</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
-
-
 <body>
-<div id="header">
-	<div id="headpic">
-	<img src ="headpic.png" alt=""/>
-	</div>
-</div>
+  <h1>Plasma Physics Calculator Hub</h1>
+  <div class="tabs">
+    <button class="tab-button" onclick="showTab('magnetic')">Magnetic & Electric Fields</button>
+    <button class="tab-button" onclick="showTab('plasma')">Plasma Properties</button>
+    <button class="tab-button" onclick="showTab('heating')">Heating & Power</button>
+    <button class="tab-button" onclick="showTab('instabilities')">Instabilities & Confinement</button>
+    <button class="tab-button" onclick="showTab('waves')">Wave Propagation</button>
+    <button class="tab-button" onclick="showTab('diagnostics')">Diagnostics</button>
+    <button class="tab-button" onclick="showTab('circuits')">Coil & Circuit Design</button>
+    <button class="tab-button" onclick="showTab('thermal')">Thermal & Engineering</button>
+    <button class="tab-button" onclick="showTab('advanced')">Advanced Theory</button>
+  </div>
 
+  <div id="waves" class="tab-content">
+    <h2>Wave Propagation</h2>
+    <ul>
+      <li>LC Resonant Frequency (example below)</li>
+      <li>Lower Hybrid Frequency</li>
+      <li>Upper Hybrid Frequency</li>
+      <li>Cold Plasma Refractive Index</li>
+      <li>Dispersion Relation Solver</li>
+    </ul>
 
+    <details class="calculator">
+      <summary><strong>LC Resonant Frequency Calculator</strong></summary>
+      <label for="inductance">Inductance (L):</label>
+      <input type="number" id="inductance" step="any">
+      <select id="inductance-unit">
+        <option value="1">H (Henries)</option>
+        <option value="0.001">mH (millihenries)</option>
+        <option value="0.000001">μH (microhenries)</option>
+      </select>
 
+      <label for="capacitance">Capacitance (C):</label>
+      <input type="number" id="capacitance" step="any">
+      <select id="capacitance-unit">
+        <option value="1">F (Farads)</option>
+        <option value="0.000001">μF (microfarads)</option>
+        <option value="0.000000001">nF (nanofarads)</option>
+        <option value="0.000000000001">pF (picofarads)</option>
+      </select>
 
-<div class="section" id="s1">
-    <div class="content" id="c1"><p id="titles">Who we are</p></div>
-</div>
-<div class="section" id="s2">
-    <div class="content" id="c2"><p id="titles">Our goals</p>This is some content text for section two</div>
-</div>
-<div class="section" id="s3">
-    <div class="content" id="c3"><p id="titles">Mains</p>This is some content text for section three</div>
-</div>
-<div class="section" id="s4">
-    <div class="content" id="c4"><p id="titles">We care</p>This is some content text for section four</div>
-</div>
-<div class="section" id="s5">
-    <div class="content" id="c5"><p id="titles">Contact us</p>This is some content text for section five</div>
-</div>
+      <label for="freq-unit">Output Frequency Unit:</label>
+      <select id="freq-unit">
+        <option value="1">Hz</option>
+        <option value="0.001">kHz</option>
+        <option value="0.000001">MHz</option>
+      </select>
 
+      <p id="result"></p>
+    </details>
+  </div>
 
+  <div id="plasma" class="tab-content">
+    <h2>Plasma Properties</h2>
+    <ul>
+      <li>Plasma Frequency Calculator (example below)</li>
+      <li>Debye Length</li>
+      <li>Plasma Beta (β)</li>
+      <li>Thermal Velocity</li>
+      <li>Mean Free Path</li>
+      <li>Coulomb Logarithm</li>
+      <li>Spitzer Resistivity</li>
+    </ul>
 
+    <details class="calculator">
+      <summary><strong>Plasma Frequency Calculator</strong></summary>
+      <label for="density">Electron Density (n<sub>e</sub>):</label>
+      <input type="number" id="density" step="any">
+      <select id="density-unit">
+        <option value="1e6">cm⁻³</option>
+        <option value="1e0">m⁻³</option>
+      </select>
+
+      <label for="pfreq-unit">Output Frequency Unit:</label>
+      <select id="pfreq-unit">
+        <option value="1">Hz</option>
+        <option value="0.001">kHz</option>
+        <option value="0.000001">MHz</option>
+      </select>
+
+      <p id="plasma-result"></p>
+    </details>
+  </div>
+
+  <script>
+    function calculateResonantFrequency() {
+      const Lval = parseFloat(document.getElementById('inductance').value);
+      const Lunit = parseFloat(document.getElementById('inductance-unit').value);
+      const Cval = parseFloat(document.getElementById('capacitance').value);
+      const Cunit = parseFloat(document.getElementById('capacitance-unit').value);
+      const freqUnit = parseFloat(document.getElementById('freq-unit').value);
+
+      const L = Lval * Lunit;
+      const C = Cval * Cunit;
+
+      if (L > 0 && C > 0) {
+        const f = 1 / (2 * Math.PI * Math.sqrt(L * C));
+        const fConv = f * freqUnit;
+        const unitLabel = document.getElementById('freq-unit').selectedOptions[0].text;
+        document.getElementById('result').innerText = `Resonant Frequency: ${fConv.toFixed(3)} ${unitLabel}`;
+      } else {
+        document.getElementById('result').innerText = '';
+      }
+    }
+
+    function calculatePlasmaFrequency() {
+      const density = parseFloat(document.getElementById('density').value);
+      const densityUnit = parseFloat(document.getElementById('density-unit').value);
+      const freqUnit = parseFloat(document.getElementById('pfreq-unit').value);
+
+      const n = density * densityUnit;
+      const e = 1.602e-19;
+      const eps0 = 8.854e-12;
+      const me = 9.109e-31;
+
+      if (n > 0) {
+        const f = Math.sqrt((n * e * e) / (eps0 * me)) / (2 * Math.PI);
+        const fConv = f * freqUnit;
+        const unitLabel = document.getElementById('pfreq-unit').selectedOptions[0].text;
+        document.getElementById('plasma-result').innerText = `Plasma Frequency: ${fConv.toFixed(3)} ${unitLabel}`;
+      } else {
+        document.getElementById('plasma-result').innerText = '';
+      }
+    }
+
+    function showTab(id) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+
+    showTab('waves');
+    calculateResonantFrequency();
+    calculatePlasmaFrequency();
+
+    ['inductance', 'inductance-unit', 'capacitance', 'capacitance-unit', 'freq-unit']
+      .forEach(id => document.getElementById(id).addEventListener('input', calculateResonantFrequency));
+
+    ['density', 'density-unit', 'pfreq-unit']
+      .forEach(id => document.getElementById(id).addEventListener('input', calculatePlasmaFrequency));
+  </script>
 </body>
-
-
-
-
-
-
-
 </html>
