@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>BALLR_Rainbow</title>
+<meta name="author" content="H.Hawk"/>
+<meta name="publisher" content="H.Hawk with Hyperfury"/>
+<meta name="description" content="A showsite for Rainbow and the BALLR team"/>
+<meta charset="UTF-8"/>
+
+<link rel="stylesheet" href="C:\Users\Ben\Desktop\BALLR_HTM\CSS\main.css">
+
+
+</head>
+
+
+
+<body>
+<div id="header">
+	<div id="headpic">
+	<img src ="C:\Users\Ben\Desktop\BALLR_HTM\PICS\headpic.png" alt=""/>
+	</div>
+</div>
+
+
+<div class="section">
+	<div id ="first">
+	<img src="C:\Users\Ben\Desktop\BALLR_HTM\PICS\first.jpg" alt=""/>
+	</div>	
+	
+	<div class="content">
+	
+	</div>
+
+</div>
+
+<div class="section">
+	<div id ="second">
+	<img src="C:\Users\Ben\Desktop\BALLR_HTM\PICS\operators.jpg" alt=""/>
+	</div>	
+	
+	<div class="content">
+	
+	</div>
+
+</div>
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,68 @@
+#header {height: 208px;
+		width: auto;
+		background-color: black;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+		position: fixed;
+		z-index: 120;
+		}
+
+body {margin: 0;}
+
+#headpic {position: relative;
+		width: 716px;
+		height: 211px; 
+		margin-left: auto;
+		margin-right: auto;		 
+		}
+.section {        
+    position:relative;
+    z-index:1;
+    height:800px;
+    width:100%;
+    background-attachment:fixed;    /* this keeps the background in place */
+    background-size:cover;
+    background-repeat:no-repeat;
+	background-position: center;
+}
+.content {
+    position:relative;
+    z-index:2;
+    background-color: black;
+        
+    height:20%;    /* this height difference allows the bg to show through */    
+}
+
+#titles {
+	font-size: 60px;
+	font-style: bold;
+	color: white;
+	font-family: 'Teko', sans-serif;
+	margin-top: 0%;
+	margin-bottom: 0%;
+	text-align: center;
+}
+
+
+.section#s1 {
+    background-image: url(https://ubistatic19-a.akamaihd.net/resource/de-de/game/rainbow6/siege/r6s_wallpaper_ka_197782.jpg);
+	top: 208px;   
+}
+.section#s2 {
+    background-image: url(http://hdqwalls.com/wallpapers/tom-clancys-rainbow-six-siege-2016-pic.jpg);
+top: 208px;
+}
+.section#s3 {    
+    background-image: url(https://ubistatic19-a.akamaihd.net/resource/de-de/game/rainbow6/siege/r6s_screenshot_7_196952.jpg);
+top: 208px;
+}
+.section#s4 {    
+    background-image: url(http://cdn.wallpapersafari.com/54/71/v19rt3.jpg);
+top: 208px;
+}
+.section#s5 {
+top: 208px;
+}    
+
