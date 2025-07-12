@@ -113,3 +113,19 @@ button:hover {
   font-weight: bold;
   color: #80ffea;
 }
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  margin-bottom: 0.2rem;
+}
+
+.input-group input,
+.input-group select {
+  max-width: 300px;
+}
+

@@ -32,9 +32,12 @@
 		<details class="calculator">
 			<summary><strong>Magnetic Field of Helmholtz Coil</strong></summary>
 			
+			<div class="input-group">
 			<label for="turns">Turns:</label>
 			<input type="number" id="turns" step="any">
+			</div>
 			
+			<div class="input-group">
 			<label for="current">Current:</label>
 			<input type="number" id="current" step="any">
 			<select id="current-unit">
@@ -42,7 +45,9 @@
 				<option value="0.001">mA</option>
 				<option value="1e0">A</option>
 			</select>
+			</div>
 			
+			<div class="input-group">
 			<label for="radius">Radius:</label>
 			<input type="number" id="radius" step="any">
 			<select id="radius-unit">
@@ -50,13 +55,16 @@
 				<option value="0.01">cm</option>
 				<option value="1e0">m</option>
 			</select>
+			</div>
 
+			<div class="input-group">
 			<label for="mfield-unit">Output Field Unit:</label>
 			<select id="mfield-unit">
 				<option value="10000000">mG</option>
 				<option value="10000">G</option>
 				<option value="1">T</option>
 			</select>
+			</div>
 
 			<p id="mfieldHH-result"></p>
 		</details>
