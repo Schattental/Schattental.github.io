@@ -13,146 +13,238 @@
 	<!-- <a target="_blank" href="https://icons8.com/icon/qrOXrfUDKkOX/calculator">Calculator</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a> -->
 </head>
 <body>
-  <h1>Plasma Physics Calculator Hub</h1>
-  <div class="tabs">
-    <button class="tab-button" onclick="showTab('magnetic')">Magnetic & Electric Fields</button>
-    <button class="tab-button" onclick="showTab('plasma')">Plasma Properties</button>
-    <button class="tab-button" onclick="showTab('heating')">Heating & Power</button>
-    <button class="tab-button" onclick="showTab('instabilities')">Instabilities & Confinement</button>
-    <button class="tab-button" onclick="showTab('waves')">Wave Propagation</button>
-    <button class="tab-button" onclick="showTab('diagnostics')">Diagnostics</button>
-    <button class="tab-button" onclick="showTab('circuits')">Coil & Circuit Design</button>
-    <button class="tab-button" onclick="showTab('thermal')">Thermal & Engineering</button>
-    <button class="tab-button" onclick="showTab('advanced')">Advanced Theory</button>
-  </div>
+	<h1>Plasma Physics Calculator Hub</h1>
+	<div class="tabs">
+		<button class="tab-button" onclick="showTab('magnetic')">Magnetic & Electric Fields</button>
+		<button class="tab-button" onclick="showTab('plasma')">Plasma Properties</button>
+		<button class="tab-button" onclick="showTab('heating')">Heating & Power</button>
+		<button class="tab-button" onclick="showTab('instabilities')">Instabilities & Confinement</button>
+		<button class="tab-button" onclick="showTab('waves')">Wave Propagation</button>
+		<button class="tab-button" onclick="showTab('diagnostics')">Diagnostics</button>
+		<button class="tab-button" onclick="showTab('circuits')">Coil & Circuit Design</button>
+		<button class="tab-button" onclick="showTab('thermal')">Thermal & Engineering</button>
+		<button class="tab-button" onclick="showTab('advanced')">Advanced Theory</button>
+	</div>
+  
+	<div id="magnetic" class="tab-content">
+		<h2>Magnetic & Electric Fields</h2>
+		<ul>
+			<li>Magnetic Field of Helmholtz Coils</li>
+			<li>Magnetic Field of a Solenoid</li>
+			<li>Toroidal Magnetic Field Estimator (Tokamak)</li>
+			<li>Poloidal Field from Coil Current</li>
+			<li>Cyclotron Frequency Calculator</li>
+			<li>Gyro-radius (Larmor radius)</li>
+			<li>Electric Field from Loop Voltage</li>
+			<li>Safety Factor (q)</li>
+			<li>Toroidal Flux Calculator</li>
+			<li>Poloidal Flux and One-Turn Voltage</li>
+			<li>Grad-B Drift & Curvature Drift</li>
+			<li>Magnetic Mirror Ratio</li>
+		</ul>
+	</div>
 
-  <div id="waves" class="tab-content">
-    <h2>Wave Propagation</h2>
-    <ul>
-      <li>LC Resonant Frequency (example below)</li>
-      <li>Lower Hybrid Frequency</li>
-      <li>Upper Hybrid Frequency</li>
-      <li>Cold Plasma Refractive Index</li>
-      <li>Dispersion Relation Solver</li>
-    </ul>
+	<div id="plasma" class="tab-content">
+		<h2>Plasma Properties</h2>
+		<ul>
+			<li>Plasma Frequency Calculator (example below)</li>
+			<li>Debye Length</li>
+			<li>Plasma Beta (β)</li>
+			<li>Thermal Velocity</li>
+			<li>Mean Free Path</li>
+			<li>Coulomb Logarithm</li>
+			<li>Spitzer Resistivity</li>
+		</ul>
 
-    <details class="calculator">
-      <summary><strong>LC Resonant Frequency Calculator</strong></summary>
-      <label for="inductance">Inductance (L):</label>
-      <input type="number" id="inductance" step="any">
-      <select id="inductance-unit">
-        <option value="1">H (Henries)</option>
-        <option value="0.001">mH (millihenries)</option>
-        <option value="0.000001">μH (microhenries)</option>
-      </select>
+		<details class="calculator">
+			<summary><strong>Plasma Frequency Calculator</strong></summary>
+			<label for="density">Electron Density (n<sub>e</sub>):</label>
+			<input type="number" id="density" step="any">
+			<select id="density-unit">
+				<option value="1e6">cm⁻³</option>
+				<option value="1e0">m⁻³</option>
+			</select>
 
-      <label for="capacitance">Capacitance (C):</label>
-      <input type="number" id="capacitance" step="any">
-      <select id="capacitance-unit">
-        <option value="1">F (Farads)</option>
-        <option value="0.000001">μF (microfarads)</option>
-        <option value="0.000000001">nF (nanofarads)</option>
-        <option value="0.000000000001">pF (picofarads)</option>
-      </select>
+			<label for="pfreq-unit">Output Frequency Unit:</label>
+			<select id="pfreq-unit">
+				<option value="1">Hz</option>
+				<option value="0.001">kHz</option>
+				<option value="0.000001">MHz</option>
+			</select>
 
-      <label for="freq-unit">Output Frequency Unit:</label>
-      <select id="freq-unit">
-        <option value="1">Hz</option>
-        <option value="0.001">kHz</option>
-        <option value="0.000001">MHz</option>
-      </select>
+			<p id="plasma-result"></p>
+		</details>
+	</div>
+	
+	<div id="heating" class="tab-content">
+		<h2>Heating & Power</h2>
+		<ul>
+			<li>Ohmic Heating Power</li>
+			<li>Neutral Beam Power Deposition</li>
+			<li>RF Heating Frequency Matching</li>
+			<li>Resonant Layer Location</li>
+			<li>Alfvén Speed</li>
+			<li>Poynting Flux</li>
+		</ul>
+	</div>
+	
+	<div id="instabilities" class="tab-content">
+		<h2>Instabilities & Confinement</h2>
+		<ul>
+			<li>MHD Stability Parameter (βN)</li>
+			<li>Tearing Mode Growth Rate</li>
+			<li>Ballooning Stability</li>
+			<li>ELM Frequency</li>
+			<li>Confinement Time (ITER89, H98, etc.)</li>
+			<li>Bootstrap Current Fraction</li>
+			<li>Critical Density for Wave Cutoff</li>
+		</ul>
+	</div>
 
-      <p id="result"></p>
-    </details>
-  </div>
+	<div id="waves" class="tab-content">
+			<h2>Wave Propagation</h2>
+			<ul>
+			  <li>LC Resonant Frequency (example below)</li>
+			  <li>Lower Hybrid Frequency</li>
+			  <li>Upper Hybrid Frequency</li>
+			  <li>Cold Plasma Refractive Index</li>
+			  <li>Dispersion Relation Solver</li>
+			</ul>
 
-  <div id="plasma" class="tab-content">
-    <h2>Plasma Properties</h2>
-    <ul>
-      <li>Plasma Frequency Calculator (example below)</li>
-      <li>Debye Length</li>
-      <li>Plasma Beta (β)</li>
-      <li>Thermal Velocity</li>
-      <li>Mean Free Path</li>
-      <li>Coulomb Logarithm</li>
-      <li>Spitzer Resistivity</li>
-    </ul>
+			<details class="calculator">
+				<summary><strong>LC Resonant Frequency Calculator</strong></summary>
+				<label for="inductance">Inductance (L):</label>
+				<input type="number" id="inductance" step="any">
+				<select id="inductance-unit">
+					<option value="1">H (Henries)</option>
+					<option value="0.001">mH (millihenries)</option>
+					<option value="0.000001">μH (microhenries)</option>
+				</select>
 
-    <details class="calculator">
-      <summary><strong>Plasma Frequency Calculator</strong></summary>
-      <label for="density">Electron Density (n<sub>e</sub>):</label>
-      <input type="number" id="density" step="any">
-      <select id="density-unit">
-        <option value="1e6">cm⁻³</option>
-        <option value="1e0">m⁻³</option>
-      </select>
+				<label for="capacitance">Capacitance (C):</label>
+				<input type="number" id="capacitance" step="any">
+				<select id="capacitance-unit">
+					<option value="1">F (Farads)</option>
+					<option value="0.000001">μF (microfarads)</option>
+					<option value="0.000000001">nF (nanofarads)</option>
+					<option value="0.000000000001">pF (picofarads)</option>
+				</select>
 
-      <label for="pfreq-unit">Output Frequency Unit:</label>
-      <select id="pfreq-unit">
-        <option value="1">Hz</option>
-        <option value="0.001">kHz</option>
-        <option value="0.000001">MHz</option>
-      </select>
+				<label for="freq-unit">Output Frequency Unit:</label>
+				<select id="freq-unit">
+					<option value="1">Hz</option>
+					<option value="0.001">kHz</option>
+					<option value="0.000001">MHz</option>
+				</select>
 
-      <p id="plasma-result"></p>
-    </details>
-  </div>
+			<p id="result"></p>
+		</details>
+	</div>
+		
+	<div id="diagnostics" class="tab-content">
+		<h2>Diagnostics & Probe Tools</h2>
+		<ul>
+			<li>Langmuir Probe IV Curve Fitter</li>
+			<li>Electron Temperature from Langmuir Probe</li>
+			<li>Plasma Density from Probe</li>
+			<li>Magnetic Probe (B-dot) Integration</li>
+			<li>Interferometer Phase Shift to Density</li>
+			<li>Spectroscopy Temperature Estimator</li>
+		</ul>
+	</div>
 
-  <script>
-    function calculateResonantFrequency() {
-      const Lval = parseFloat(document.getElementById('inductance').value);
-      const Lunit = parseFloat(document.getElementById('inductance-unit').value);
-      const Cval = parseFloat(document.getElementById('capacitance').value);
-      const Cunit = parseFloat(document.getElementById('capacitance-unit').value);
-      const freqUnit = parseFloat(document.getElementById('freq-unit').value);
+	<div id="circuits" class="tab-content">
+		<h2>Coil & Circuit Design</h2>
+		<ul>
+			<li>Inductance of Toroidal Coils</li>
+			<li>Self-Resonance of Coils</li>
+			<li>Skin Depth</li>
+			<li>Mutual Inductance</li>
+			<li>Transformer Voltage</li>
+			<li>RC, RL, RLC Time Constants</li>
+			<li>Resistive Heating in Coils</li>
+		</ul>
+	</div>
 
-      const L = Lval * Lunit;
-      const C = Cval * Cunit;
+	<div id="thermal" class="tab-content">
+		<h2>Thermal & Engineering</h2>
+		<ul>
+			<li>Thermal Load on Divertor</li>
+			<li>Plasma Power Balance</li>
+			<li>Vacuum Pumping Time</li>
+			<li>Sheath Potential</li>
+			<li>Cooling Power for Magnets</li>
+		</ul>
+	</div>
 
-      if (L > 0 && C > 0) {
-        const f = 1 / (2 * Math.PI * Math.sqrt(L * C));
-        const fConv = f * freqUnit;
-        const unitLabel = document.getElementById('freq-unit').selectedOptions[0].text;
-        document.getElementById('result').innerText = `Resonant Frequency: ${fConv.toFixed(3)} ${unitLabel}`;
-      } else {
-        document.getElementById('result').innerText = '';
-      }
-    }
+	<div id="advanced" class="tab-content">
+		<h2>Advanced Theory</h2>
+		<ul>
+			<li>Tokamak Equilibrium Parameters</li>
+			<li>Neoclassical Transport Coefficients</li>
+			<li>Saha Equation Solver</li>
+			<li>Fusion Reaction Rate</li>
+			<li>Bremsstrahlung Loss</li>
+			<li>Synchrotron Radiation</li>
+			<li>Runaway Electron Threshold</li>
+		</ul>
+	</div>
+		
+	<script>
+		function calculateResonantFrequency() {
+			const Lval = parseFloat(document.getElementById('inductance').value);
+			const Lunit = parseFloat(document.getElementById('inductance-unit').value);
+			const Cval = parseFloat(document.getElementById('capacitance').value);
+			const Cunit = parseFloat(document.getElementById('capacitance-unit').value);
+			const freqUnit = parseFloat(document.getElementById('freq-unit').value);
 
-    function calculatePlasmaFrequency() {
-      const density = parseFloat(document.getElementById('density').value);
-      const densityUnit = parseFloat(document.getElementById('density-unit').value);
-      const freqUnit = parseFloat(document.getElementById('pfreq-unit').value);
+			const L = Lval * Lunit;
+			const C = Cval * Cunit;
 
-      const n = density * densityUnit;
-      const e = 1.602e-19;
-      const eps0 = 8.854e-12;
-      const me = 9.109e-31;
+		if (L > 0 && C > 0) {
+			const f = 1 / (2 * Math.PI * Math.sqrt(L * C));
+			const fConv = f * freqUnit;
+			const unitLabel = document.getElementById('freq-unit').selectedOptions[0].text;
+			document.getElementById('result').innerText = `Resonant Frequency: ${fConv.toFixed(3)} ${unitLabel}`;
+			} else {
+			document.getElementById('result').innerText = '';
+			}
+		}
 
-      if (n > 0) {
-        const f = Math.sqrt((n * e * e) / (eps0 * me)) / (2 * Math.PI);
-        const fConv = f * freqUnit;
-        const unitLabel = document.getElementById('pfreq-unit').selectedOptions[0].text;
-        document.getElementById('plasma-result').innerText = `Plasma Frequency: ${fConv.toFixed(3)} ${unitLabel}`;
-      } else {
-        document.getElementById('plasma-result').innerText = '';
-      }
-    }
+		function calculatePlasmaFrequency() {
+			const density = parseFloat(document.getElementById('density').value);
+			const densityUnit = parseFloat(document.getElementById('density-unit').value);
+			const freqUnit = parseFloat(document.getElementById('pfreq-unit').value);
 
-    function showTab(id) {
-      document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
-    }
+			const n = density * densityUnit;
+			const e = 1.602e-19;
+			const eps0 = 8.854e-12;
+			const me = 9.109e-31;
 
-    showTab('waves');
-    calculateResonantFrequency();
-    calculatePlasmaFrequency();
+		if (n > 0) {
+			const f = Math.sqrt((n * e * e) / (eps0 * me)) / (2 * Math.PI);
+			const fConv = f * freqUnit;
+			const unitLabel = document.getElementById('pfreq-unit').selectedOptions[0].text;
+			document.getElementById('plasma-result').innerText = `Plasma Frequency: ${fConv.toFixed(3)} ${unitLabel}`;
+			} else {
+			document.getElementById('plasma-result').innerText = '';
+			}
+		}
 
-    ['inductance', 'inductance-unit', 'capacitance', 'capacitance-unit', 'freq-unit']
-      .forEach(id => document.getElementById(id).addEventListener('input', calculateResonantFrequency));
+		function showTab(id) {
+			document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
+			document.getElementById(id).style.display = 'block';
+		}
 
-    ['density', 'density-unit', 'pfreq-unit']
-      .forEach(id => document.getElementById(id).addEventListener('input', calculatePlasmaFrequency));
-  </script>
+		showTab('waves');
+		calculateResonantFrequency();
+		calculatePlasmaFrequency();
+
+		['inductance', 'inductance-unit', 'capacitance', 'capacitance-unit', 'freq-unit']
+		  .forEach(id => document.getElementById(id).addEventListener('input', calculateResonantFrequency));
+
+		['density', 'density-unit', 'pfreq-unit']
+		  .forEach(id => document.getElementById(id).addEventListener('input', calculatePlasmaFrequency));
+	</script>
 </body>
 </html>
