@@ -236,7 +236,7 @@
 			const u0 = 4 * Math.PI * 1e-7;
 			
 			if (I > 0 && R > 0 && turns > 0) {
-				const B = (8 / (5 * Math.sqrt(5))) * (u0 * 1e-6 * turns * I)/R;
+				const B = (8 / (5 * Math.sqrt(5))) * (u0 * turns * I)/R;
 				const BConv = B * mfieldUnit;
 				const unitLabel = document.getElementById('mfield-unit').selectedOptions[0].text;
 				document.getElementById('mfieldHH-result').innerText = `Magnetic Field: ${BConv.toFixed(3)} ${unitLabel}`;
