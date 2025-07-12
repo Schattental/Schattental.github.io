@@ -168,7 +168,7 @@
 					<option value="0.000001">MHz</option>
 				</select>
 
-			<p id="result"></p>
+			<p id="lc-result"></p>
 		</details>
 	</div>
 		
@@ -259,9 +259,9 @@
 				const f = 1 / (2 * Math.PI * Math.sqrt(L * C));
 				const fConv = f * freqUnit;
 				const unitLabel = document.getElementById('freq-unit').selectedOptions[0].text;
-				document.getElementById('result').innerText = `Resonant Frequency: ${fConv.toFixed(3)} ${unitLabel}`;
+				document.getElementById('lc-result').innerText = `Resonant Frequency: ${fConv.toFixed(3)} ${unitLabel}`;
 			} else {
-				document.getElementById('result').innerText = '';
+				document.getElementById('lc-result').innerText = '';
 			}
 		}
 
@@ -293,12 +293,16 @@
 		showTab('waves');
 		calculateResonantFrequency();
 		calculatePlasmaFrequency();
+		calculateHelmHoltzCoilField();
 
 		['inductance', 'inductance-unit', 'capacitance', 'capacitance-unit', 'freq-unit']
 		  .forEach(id => document.getElementById(id).addEventListener('input', calculateResonantFrequency));
 
 		['density', 'density-unit', 'pfreq-unit']
 		  .forEach(id => document.getElementById(id).addEventListener('input', calculatePlasmaFrequency));
+		
+		['turns', 'current', 'current-unit', 'radius', 'radius-unit', 'mfield-unit']
+		  .forEach(id => document.getElementById(id).addEventListener('input', calculateHelmHoltzCoilField));
 	</script>
 </body>
 </html>
