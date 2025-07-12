@@ -28,8 +28,39 @@
   
 	<div id="magnetic" class="tab-content">
 		<h2>Magnetic & Electric Fields</h2>
+		
+		<details class="calculator">
+			<summary><strong>Magnetic Field of Helmholtz Coil</strong></summary>
+			
+			<label for="turns">Turns:</label>
+			<input type="number" id="turns" step="any">
+			
+			<label for="current">Current:</label>
+			<input type="number" id="current" step="any">
+			<select id="current-unit">
+				<option value="0.000001">uA</option>
+				<option value="0.001">mA</option>
+				<option value="1e0">A</option>
+			</select>
+			
+			<label for="radius">Radius:</label>
+			<input type="number" id="radius" step="any">
+			<select id="radius-unit">
+				<option value="0.001">mm</option>
+				<option value="0.01">cm</option>
+				<option value="1e0">m</option>
+			</select>
+
+			<label for="mfield-unit">Output Field Unit:</label>
+			<select id="mfield-unit">
+				<option value="10000000">mG</option>
+				<option value="10000">G</option>
+				<option value="1">T</option>
+			</select>
+
+			<p id="mfieldHH-result"></p>
+		</details>
 		<ul>
-			<li>Magnetic Field of Helmholtz Coils</li>
 			<li>Magnetic Field of a Solenoid</li>
 			<li>Toroidal Magnetic Field Estimator (Tokamak)</li>
 			<li>Poloidal Field from Coil Current</li>
@@ -191,6 +222,29 @@
 	</div>
 		
 	<script>
+		function calculateHelmHoltzCoilField() {
+			const turns = parseFloat(document.getElementById('turns').value);
+			const currentVal = parseFloat(document.getElementById('current').value);
+			const currentUnit = parseFloat(document.getElementById('current-unit').value);
+			const radiusVal = parseFloat(document.getElementById('radius').value);
+			const radiusUnit = parseFloat(document.getElementById('radius-unit').value);
+			const mfieldUnit = parseFloat(document.getElementById('mfield-unit').value);
+			
+			const I = currentVal * currentUnit;
+			const R = radiusVal * radiusUnit;
+			
+			const u = 4 * Math.PI * 1e-7;
+			
+			if (I > 0 && R > 0 && turns > 0) {
+				const B = (8 / (5 * Math.sqrt(5))) * (u * 1e-6 * turns * I)/R
+				const BConv = B * mfieldUnit;
+				const unitLabel = document.getElementById('mfield-unit').selectedOptions[0].text;
+				document.getElementById('mfieldHH-result').innerText = `Magnetic Field: ${fConv.toFixed(3)} ${unitLabel}`;
+			} else {
+				document.getElementById('mfieldHH-result').innerText = '';
+			}
+		}
+	
 		function calculateResonantFrequency() {
 			const Lval = parseFloat(document.getElementById('inductance').value);
 			const Lunit = parseFloat(document.getElementById('inductance-unit').value);
@@ -201,13 +255,13 @@
 			const L = Lval * Lunit;
 			const C = Cval * Cunit;
 
-		if (L > 0 && C > 0) {
-			const f = 1 / (2 * Math.PI * Math.sqrt(L * C));
-			const fConv = f * freqUnit;
-			const unitLabel = document.getElementById('freq-unit').selectedOptions[0].text;
-			document.getElementById('result').innerText = `Resonant Frequency: ${fConv.toFixed(3)} ${unitLabel}`;
+			if (L > 0 && C > 0) {
+				const f = 1 / (2 * Math.PI * Math.sqrt(L * C));
+				const fConv = f * freqUnit;
+				const unitLabel = document.getElementById('freq-unit').selectedOptions[0].text;
+				document.getElementById('result').innerText = `Resonant Frequency: ${fConv.toFixed(3)} ${unitLabel}`;
 			} else {
-			document.getElementById('result').innerText = '';
+				document.getElementById('result').innerText = '';
 			}
 		}
 
@@ -221,13 +275,13 @@
 			const eps0 = 8.854e-12;
 			const me = 9.109e-31;
 
-		if (n > 0) {
-			const f = Math.sqrt((n * e * e) / (eps0 * me)) / (2 * Math.PI);
-			const fConv = f * freqUnit;
-			const unitLabel = document.getElementById('pfreq-unit').selectedOptions[0].text;
-			document.getElementById('plasma-result').innerText = `Plasma Frequency: ${fConv.toFixed(3)} ${unitLabel}`;
+			if (n > 0) {
+				const f = Math.sqrt((n * e * e) / (eps0 * me)) / (2 * Math.PI);
+				const fConv = f * freqUnit;
+				const unitLabel = document.getElementById('pfreq-unit').selectedOptions[0].text;
+				document.getElementById('plasma-result').innerText = `Plasma Frequency: ${fConv.toFixed(3)} ${unitLabel}`;
 			} else {
-			document.getElementById('plasma-result').innerText = '';
+				document.getElementById('plasma-result').innerText = '';
 			}
 		}
 
