@@ -121,7 +121,9 @@ button:hover {
 }
 
 .input-group label {
-  margin-bottom: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
 }
 
 .input-group input,

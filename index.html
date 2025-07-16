@@ -33,37 +33,37 @@
 			<summary><strong>Magnetic Field of Helmholtz Coil</strong></summary>
 			
 			<div class="input-group">
-			<label for="turns">Turns:</label>
-			<input type="number" id="turns" step="any">
+				<label for="turns">Turns:</label>
+				<input type="number" id="turns" step="any">
 			</div>
 			
 			<div class="input-group">
-			<label for="current">Current:</label>
-			<input type="number" id="current" step="any">
-			<select id="current-unit">
-				<option value="0.000001">uA</option>
-				<option value="0.001">mA</option>
-				<option value="1e0">A</option>
-			</select>
+				<label for="current">Current:</label>
+				<input type="number" id="current" step="any">
+				<select id="current-unit">
+					<option value="0.000001">uA</option>
+					<option value="0.001">mA</option>
+					<option value="1e0">A</option>
+				</select>
 			</div>
 			
 			<div class="input-group">
-			<label for="radius">Radius:</label>
-			<input type="number" id="radius" step="any">
-			<select id="radius-unit">
-				<option value="0.001">mm</option>
-				<option value="0.01">cm</option>
-				<option value="1e0">m</option>
-			</select>
+				<label for="radius">Radius:</label>
+				<input type="number" id="radius" step="any">
+				<select id="radius-unit">
+					<option value="0.001">mm</option>
+					<option value="0.01">cm</option>
+					<option value="1e0">m</option>
+				</select>
 			</div>
 
 			<div class="input-group">
-			<label for="mfield-unit">Output Field Unit:</label>
-			<select id="mfield-unit">
-				<option value="10000000">mG</option>
-				<option value="10000">G</option>
-				<option value="1">T</option>
-			</select>
+				<label for="mfield-unit">Output Field Unit:</label>
+				<select id="mfield-unit">
+					<option value="10000000">mG</option>
+					<option value="10000">G</option>
+					<option value="1">T</option>
+				</select>
 			</div>
 
 			<p id="mfieldHH-result"></p>
@@ -141,42 +141,48 @@
 	</div>
 
 	<div id="waves" class="tab-content">
-			<h2>Wave Propagation</h2>
-			<ul>
-			  <li>LC Resonant Frequency (example below)</li>
-			  <li>Lower Hybrid Frequency</li>
-			  <li>Upper Hybrid Frequency</li>
-			  <li>Cold Plasma Refractive Index</li>
-			  <li>Dispersion Relation Solver</li>
-			</ul>
+		<h2>Wave Propagation</h2>
+		<ul>
+		  <li>LC Resonant Frequency (example below)</li>
+		  <li>Lower Hybrid Frequency</li>
+		  <li>Upper Hybrid Frequency</li>
+		  <li>Cold Plasma Refractive Index</li>
+		  <li>Dispersion Relation Solver</li>
+		</ul>
 
-			<details class="calculator">
-				<summary><strong>LC Resonant Frequency Calculator</strong></summary>
-				<label for="inductance">Inductance (L):</label>
+		<details class="calculator">
+			<summary><strong>LC Resonant Frequency Calculator</strong></summary>
+
+			<div class="input-group">
+				<label><input type="radio" name="lc-output" value="inductance"> Inductance (L):</label>
 				<input type="number" id="inductance" step="any">
 				<select id="inductance-unit">
-					<option value="1">H (Henries)</option>
-					<option value="0.001">mH (millihenries)</option>
-					<option value="0.000001">μH (microhenries)</option>
+					<option value="1">H</option>
+					<option value="0.001">mH</option>
+					<option value="0.000001">μH</option>
 				</select>
+			</div>
 
-				<label for="capacitance">Capacitance (C):</label>
+			<div class="input-group">
+				<label><input type="radio" name="lc-output" value="capacitance"> Capacitance (C):</label>
 				<input type="number" id="capacitance" step="any">
 				<select id="capacitance-unit">
-					<option value="1">F (Farads)</option>
-					<option value="0.000001">μF (microfarads)</option>
-					<option value="0.000000001">nF (nanofarads)</option>
-					<option value="0.000000000001">pF (picofarads)</option>
+					<option value="1">F</option>
+					<option value="0.000001">μF</option>
+					<option value="0.000000001">nF</option>
+					<option value="0.000000000001">pF</option>
 				</select>
+			</div>
 
-				<label for="freq-unit">Output Frequency Unit:</label>
+			<div class="input-group">
+				<label><input type="radio" name="lc-output" value="frequency" checked> Frequency (f):</label>
+				<input type="number" id="frequency" step="any">
 				<select id="freq-unit">
 					<option value="1">Hz</option>
 					<option value="0.001">kHz</option>
 					<option value="0.000001">MHz</option>
 				</select>
-
-			<p id="lc-result"></p>
+			</div>
 		</details>
 	</div>
 		
@@ -254,22 +260,36 @@
 		}
 	
 		function calculateResonantFrequency() {
+			const mode = document.querySelector('input[name="lc-output"]:checked').value;
 			const Lval = parseFloat(document.getElementById('inductance').value);
 			const Lunit = parseFloat(document.getElementById('inductance-unit').value);
 			const Cval = parseFloat(document.getElementById('capacitance').value);
 			const Cunit = parseFloat(document.getElementById('capacitance-unit').value);
-			const freqUnit = parseFloat(document.getElementById('freq-unit').value);
+			const Fval = parseFloat(document.getElementById('frequency').value);
+			const Funit = parseFloat(document.getElementById('freq-unit').value);
 
-			const L = Lval * Lunit;
-			const C = Cval * Cunit;
+			const L = isNaN(Lval) ? null : Lval * Lunit;
+			const C = isNaN(Cval) ? null : Cval * Cunit;
+			const f = isNaN(Fval) ? null : Fval / Funit;
 
-			if (L > 0 && C > 0) {
-				const f = 1 / (2 * Math.PI * Math.sqrt(L * C));
-				const fConv = f * freqUnit;
-				const unitLabel = document.getElementById('freq-unit').selectedOptions[0].text;
-				document.getElementById('lc-result').innerText = `Resonant Frequency: ${fConv.toFixed(3)} ${unitLabel}`;
-			} else {
-				document.getElementById('lc-result').innerText = '';
+			if (mode === 'frequency') {
+				if (L > 0 && C > 0) {
+					const freq = 1 / (2 * Math.PI * Math.sqrt(L * C));
+					const out = freq * Funit;
+					document.getElementById('frequency').value = out.toFixed(6);
+				}
+			} else if (mode === 'inductance') {
+				if (C > 0 && f > 0) {
+					const Lout = 1 / ((2 * Math.PI * f) ** 2 * C);
+					const Lconv = Lout / Lunit;
+					document.getElementById('inductance').value = Lconv;
+				}
+			} else if (mode === 'capacitance') {
+				if (L > 0 && f > 0) {
+					const Cout = 1 / ((2 * Math.PI * f) ** 2 * L);
+					const Cconv = Cout / Cunit;
+					document.getElementById('capacitance').value = Cconv;
+				}
 			}
 		}
 
@@ -303,14 +323,18 @@
 		calculatePlasmaFrequency();
 		calculateHelmHoltzCoilField();
 
-		['inductance', 'inductance-unit', 'capacitance', 'capacitance-unit', 'freq-unit']
-		  .forEach(id => document.getElementById(id).addEventListener('input', calculateResonantFrequency));
+		['inductance', 'inductance-unit', 'capacitance', 'capacitance-unit', 'frequency', 'freq-unit']
+		.forEach(id => document.getElementById(id).addEventListener('input', calculateResonantFrequency));
 
 		['density', 'density-unit', 'pfreq-unit']
-		  .forEach(id => document.getElementById(id).addEventListener('input', calculatePlasmaFrequency));
+		.forEach(id => document.getElementById(id).addEventListener('input', calculatePlasmaFrequency));
 		
 		['turns', 'current', 'current-unit', 'radius', 'radius-unit', 'mfield-unit']
-		  .forEach(id => document.getElementById(id).addEventListener('input', calculateHelmHoltzCoilField));
+		.forEach(id => document.getElementById(id).addEventListener('input', calculateHelmHoltzCoilField));
+		
+		document.querySelectorAll('input[name="lc-output"]').forEach(radio => {
+			radio.addEventListener('change', calculateResonantFrequency);
+		});
 	</script>
 </body>
 </html>
