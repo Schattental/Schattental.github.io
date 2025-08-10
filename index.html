@@ -33,12 +33,18 @@
 			<summary><strong>Magnetic Field of Helmholtz Coil</strong></summary>
 			
 			<div class="input-group">
-				<label for="turns">Turns:</label>
+				<div class="toggle-group">
+					<input type="radio" id="outTurnsHH" name="mfieldHH-output" value="turns">
+					<label for="outTurnsHH">Turns (N):</label>
+				</div>
 				<input type="number" id="turns" step="any">
 			</div>
 			
 			<div class="input-group">
-				<label for="current">Current:</label>
+				<div class="toggle-group">
+					<input type="radio" id="outCurrentHH" name="mfieldHH-output" value="current">
+					<label for="outCurrentHH">Current (I):</label>
+				</div>
 				<input type="number" id="current" step="any">
 				<select id="current-unit">
 					<option value="0.000001">uA</option>
@@ -48,7 +54,10 @@
 			</div>
 			
 			<div class="input-group">
-				<label for="radius">Radius:</label>
+				<div class="toggle-group">
+					<input type="radio" id="outRadiusHH" name="mfieldHH-output" value="radius">
+					<label for="outRadiusHH">Radius (R):</label>
+				</div>
 				<input type="number" id="radius" step="any">
 				<select id="radius-unit">
 					<option value="0.001">mm</option>
@@ -58,15 +67,17 @@
 			</div>
 
 			<div class="input-group">
-				<label for="mfield-unit">Output Field Unit:</label>
+				<div class="toggle-group">
+					<input type="radio" id="outmfieldHH" name="mfieldHH-output" value="mfield" checked>
+					<label for="outmfieldHH">Magnetic Field (B):</label>
+				</div>
+				<input type="number" id="mfield" step="any">
 				<select id="mfield-unit">
 					<option value="10000000">mG</option>
 					<option value="10000">G</option>
 					<option value="1">T</option>
 				</select>
 			</div>
-
-			<p id="mfieldHH-result"></p>
 		</details>
 		<ul>
 			<li>Magnetic Field of a Solenoid</li>
@@ -235,84 +246,11 @@
 		</ul>
 	</div>
 		
+		
+	<script src="lcCalculator.js"></script>
+	<script src="hhCoilField.js"></script>
+	<script src="plasmaFreq.js"></script>
 	<script>
-		function calculateHelmHoltzCoilField() {
-			const turns = parseFloat(document.getElementById('turns').value);
-			const currentVal = parseFloat(document.getElementById('current').value);
-			const currentUnit = parseFloat(document.getElementById('current-unit').value);
-			const radiusVal = parseFloat(document.getElementById('radius').value);
-			const radiusUnit = parseFloat(document.getElementById('radius-unit').value);
-			const mfieldUnit = parseFloat(document.getElementById('mfield-unit').value);
-			
-			const I = currentVal * currentUnit;
-			const R = radiusVal * radiusUnit;
-			
-			const u0 = 4 * Math.PI * 1e-7;
-			
-			if (I > 0 && R > 0 && turns > 0) {
-				const B = (8 / (5 * Math.sqrt(5))) * (u0 * turns * I)/R;
-				const BConv = B * mfieldUnit;
-				const unitLabel = document.getElementById('mfield-unit').selectedOptions[0].text;
-				document.getElementById('mfieldHH-result').innerText = `Magnetic Field: ${BConv.toFixed(3)} ${unitLabel}`;
-			} else {
-				document.getElementById('mfieldHH-result').innerText = '';
-			}
-		}
-	
-		function calculateResonantFrequency() {
-			const mode = document.querySelector('input[name="lc-output"]:checked').value;
-			const Lval = parseFloat(document.getElementById('inductance').value);
-			const Lunit = parseFloat(document.getElementById('inductance-unit').value);
-			const Cval = parseFloat(document.getElementById('capacitance').value);
-			const Cunit = parseFloat(document.getElementById('capacitance-unit').value);
-			const Fval = parseFloat(document.getElementById('frequency').value);
-			const Funit = parseFloat(document.getElementById('freq-unit').value);
-
-			const L = isNaN(Lval) ? null : Lval * Lunit;
-			const C = isNaN(Cval) ? null : Cval * Cunit;
-			const f = isNaN(Fval) ? null : Fval / Funit;
-
-			if (mode === 'frequency') {
-				if (L > 0 && C > 0) {
-					const freq = 1 / (2 * Math.PI * Math.sqrt(L * C));
-					const out = freq * Funit;
-					document.getElementById('frequency').value = out.toFixed(6);
-				}
-			} else if (mode === 'inductance') {
-				if (C > 0 && f > 0) {
-					const Lout = 1 / ((2 * Math.PI * f) ** 2 * C);
-					const Lconv = Lout / Lunit;
-					document.getElementById('inductance').value = Lconv;
-				}
-			} else if (mode === 'capacitance') {
-				if (L > 0 && f > 0) {
-					const Cout = 1 / ((2 * Math.PI * f) ** 2 * L);
-					const Cconv = Cout / Cunit;
-					document.getElementById('capacitance').value = Cconv;
-				}
-			}
-		}
-
-		function calculatePlasmaFrequency() {
-			const density = parseFloat(document.getElementById('density').value);
-			const densityUnit = parseFloat(document.getElementById('density-unit').value);
-			const freqUnit = parseFloat(document.getElementById('pfreq-unit').value);
-
-			const n = density * densityUnit;
-			const e = 1.602e-19;
-			const eps0 = 8.854e-12;
-			const me = 9.109e-31;
-
-			if (n > 0) {
-				const f = Math.sqrt((n * e * e) / (eps0 * me)) / (2 * Math.PI);
-				const fConv = f * freqUnit;
-				const unitLabel = document.getElementById('pfreq-unit').selectedOptions[0].text;
-				document.getElementById('plasma-result').innerText = `Plasma Frequency: ${fConv.toFixed(3)} ${unitLabel}`;
-			} else {
-				document.getElementById('plasma-result').innerText = '';
-			}
-		}
-
 		function showTab(id) {
 			document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
 			document.getElementById(id).style.display = 'block';
@@ -329,10 +267,13 @@
 		['density', 'density-unit', 'pfreq-unit']
 		.forEach(id => document.getElementById(id).addEventListener('input', calculatePlasmaFrequency));
 		
-		['turns', 'current', 'current-unit', 'radius', 'radius-unit', 'mfield-unit']
+		['turns', 'current', 'current-unit', 'radius', 'radius-unit', 'mfield', 'mfield-unit']
 		.forEach(id => document.getElementById(id).addEventListener('input', calculateHelmHoltzCoilField));
 		
 		document.querySelectorAll('input[name="lc-output"]').forEach(radio => {
+			radio.addEventListener('change', calculateResonantFrequency);
+		});
+		document.querySelectorAll('input[name="mfieldHH-output"]').forEach(radio => {
 			radio.addEventListener('change', calculateResonantFrequency);
 		});
 	</script>

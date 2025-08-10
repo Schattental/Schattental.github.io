@@ -131,3 +131,19 @@ button:hover {
   max-width: 300px;
 }
 
+.toggle-group input[type="radio"] {
+	display: none;
+}
+.toggle-group label {
+	padding: 0.4rem 0.8rem;
+	border: 1px solid #888;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: #222;
+	color: #fff;
+}
+.toggle-group input[type="radio"]:checked + label {
+	background-color: #0ff;
+	color: #000;
+	border-color: #0ff;
+}
