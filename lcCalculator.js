@@ -21,13 +21,13 @@ function calculateResonantFrequency() {
 		if (C > 0 && f > 0) {
 			const Lout = 1 / ((2 * Math.PI * f) ** 2 * C);
 			const Lconv = Lout / Lunit;
-			document.getElementById('inductance').value = Lconv;
+			document.getElementById('inductance').value = Lconv.toFixed(6);
 		}
 	} else if (mode === 'capacitance') {
 		if (L > 0 && f > 0) {
 			const Cout = 1 / ((2 * Math.PI * f) ** 2 * L);
 			const Cconv = Cout / Cunit;
-			document.getElementById('capacitance').value = Cconv;
+			document.getElementById('capacitance').value = Cconv.toFixed(6);
 		}
 	}
 }

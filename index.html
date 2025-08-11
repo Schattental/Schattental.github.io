@@ -165,7 +165,10 @@
 			<summary><strong>LC Resonant Frequency Calculator</strong></summary>
 
 			<div class="input-group">
-				<label><input type="radio" name="lc-output" value="inductance"> Inductance (L):</label>
+				<div class="toggle-group">
+					<input type="radio" id="outInductance" name="lc-output" value="inductance">
+					<label for="outInductance">Inductance (L):</label>
+				</div>
 				<input type="number" id="inductance" step="any">
 				<select id="inductance-unit">
 					<option value="1">H</option>
@@ -175,7 +178,10 @@
 			</div>
 
 			<div class="input-group">
-				<label><input type="radio" name="lc-output" value="capacitance"> Capacitance (C):</label>
+				<div class="toggle-group">
+					<input type="radio" id="outCapacitance" name="lc-output" value="capacitance">
+					<label for="outCapacitance">Capacitance (C):</label>
+				</div>
 				<input type="number" id="capacitance" step="any">
 				<select id="capacitance-unit">
 					<option value="1">F</option>
@@ -186,7 +192,10 @@
 			</div>
 
 			<div class="input-group">
-				<label><input type="radio" name="lc-output" value="frequency" checked> Frequency (f):</label>
+				<div class="toggle-group">
+					<input type="radio" id="outFrequencylc" name="lc-output" value="frequency" checked>
+					<label for="outFrequencylc">Frequency (f):</label>
+				</div>
 				<input type="number" id="frequency" step="any">
 				<select id="freq-unit">
 					<option value="1">Hz</option>
@@ -211,6 +220,155 @@
 
 	<div id="circuits" class="tab-content">
 		<h2>Coil & Circuit Design</h2>
+		<details class="calculator">
+			<summary><strong>Capacitive Reactance Calculator</strong></summary>
+
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outCapReacOmega" name="capReac-output" value="capReacOmega">
+					<label for="outCapReacOmega">Frequency (F or omega):</label>
+				</div>
+				<input type="number" id="capReacOmega" step="any">
+				<select id="capReacOmega-unit">
+					<option value="1">omega</option>
+					<option value="6.2831853072">Hz</option>
+					<option value="6283.1853072">kHz</option>
+					<option value="6283185.307200001">MHz</option>
+				</select>
+			</div>
+
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outReacCap" name="capReac-output" value="reacCap">
+					<label for="outReacCap">Capacitance (C):</label>
+				</div>
+				<input type="number" id="reacCap" step="any">
+				<select id="reacCap-unit">
+					<option value="1">F</option>
+					<option value="0.000001">μF</option>
+					<option value="0.000000001">nF</option>
+					<option value="0.000000000001">pF</option>
+				</select>
+			</div>
+
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outCapReactance" name="capReac-output" value="capReactance" checked>
+					<label for="outCapReactance">Reactance (X):</label>
+				</div>
+				<input type="number" id="capReactance" step="any">
+				<select id="capReactance-unit">
+					<option value="1">Ohm</option>
+					<option value="0.001">kOhm</option>
+					<option value="0.000001">MOhm</option>
+				</select>
+			</div>
+		</details>
+		<details class="calculator">
+			<summary><strong>Inductive Reactance Calculator</strong></summary>
+
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outIndReacOmega" name="indReac-output" value="indReacOmega">
+					<label for="outIndReacOmega">Frequency (F or omega):</label>
+				</div>
+				<input type="number" id="indReacOmega" step="any">
+				<select id="indReacOmega-unit">
+					<option value="1">omega</option>
+					<option value="6.2831853072">Hz</option>
+					<option value="6283.1853072">kHz</option>
+					<option value="6283185.307200001">MHz</option>
+				</select>
+			</div>
+
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outReacInd" name="indReac-output" value="reacInd">
+					<label for="outReacInd">Inductance (L):</label>
+				</div>
+				<input type="number" id="reacInd" step="any">
+				<select id="reacInd-unit">
+					<option value="1">H</option>
+					<option value="0.001">mH</option>
+					<option value="0.000001">μH</option>
+					<option value="0.000000001">nH</option>
+					<option value="0.000000000001">pH</option>
+				</select>
+			</div>
+
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outIndReactance" name="indReac-output" value="indReactance" checked>
+					<label for="outIndReactance">Reactance (X):</label>
+				</div>
+				<input type="number" id="indReactance" step="any">
+				<select id="indReactance-unit">
+					<option value="1">Ohm</option>
+					<option value="0.001">kOhm</option>
+					<option value="0.000001">MOhm</option>
+				</select>
+			</div>
+		</details>
+		<details class="calculator">
+			<summary><strong>Coil Inductance Calculator</strong></summary>
+
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outRelPermCoilInd" name="coilInd-output" value="relPermCoilInd">
+					<label for="outRelPermCoilInd">Relative Permeability of Core (μr):</label>
+				</div>
+				<input type="number" id="relPermCoilInd" step="any">
+			</div>
+
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outTurnsCoilInd" name="coilInd-output" value="turnsCoilInd">
+					<label for="outTurnsCoilInd">Turns (N):</label>
+				</div>
+				<input type="number" id="turnsCoilInd" step="any">
+			</div>
+
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outRadiusCoilInd" name="coilInd-output" value="radiusCoilInd">
+					<label for="outRadiusCoilInd">Radius (R):</label>
+				</div>
+				<input type="number" id="radiusCoilInd" step="any">
+				<select id="radiusCoilInd-unit">
+					<option value="1">m</option>
+					<option value="0.01">cm</option>
+					<option value="0.001">mm</option>
+				</select>
+			</div>
+			
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outLengthCoilInd" name="coilInd-output" value="lengthCoilInd">
+					<label for="outLengthCoilInd">Length of Coil (l):</label>
+				</div>
+				<input type="number" id="lengthCoilInd" step="any">
+				<select id="lengthCoilInd-unit">
+					<option value="1">m</option>
+					<option value="0.01">cm</option>
+					<option value="0.001">mm</option>
+				</select>
+			</div>
+			
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outCoilInd" name="coilInd-output" value="coilInd" checked>
+					<label for="outCoilInd">Coil Inductance (L):</label>
+				</div>
+				<input type="number" id="coilInd" step="any">
+				<select id="coilInd-unit">
+					<option value="1">H</option>
+					<option value="0.001">mH</option>
+					<option value="0.000001">μH</option>
+					<option value="0.000000001">nH</option>
+					<option value="0.000000000001">pH</option>
+				</select>
+			</div>
+		</details>
 		<ul>
 			<li>Inductance of Toroidal Coils</li>
 			<li>Self-Resonance of Coils</li>
@@ -250,6 +408,9 @@
 	<script src="lcCalculator.js"></script>
 	<script src="hhCoilField.js"></script>
 	<script src="plasmaFreq.js"></script>
+	<script src="capReactance.js"></script>
+	<script src="indReactance.js"></script>
+	<script src="coilInductance.js"></script>
 	<script>
 		function showTab(id) {
 			document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
@@ -260,6 +421,9 @@
 		calculateResonantFrequency();
 		calculatePlasmaFrequency();
 		calculateHelmHoltzCoilField();
+		calculateCapacitiveReactance();
+		calculateInductiveReactance();
+		calculateCoilInductance();
 
 		['inductance', 'inductance-unit', 'capacitance', 'capacitance-unit', 'frequency', 'freq-unit']
 		.forEach(id => document.getElementById(id).addEventListener('input', calculateResonantFrequency));
@@ -270,11 +434,29 @@
 		['turns', 'current', 'current-unit', 'radius', 'radius-unit', 'mfield', 'mfield-unit']
 		.forEach(id => document.getElementById(id).addEventListener('input', calculateHelmHoltzCoilField));
 		
+		['capReacOmega', 'capReacOmega-unit', 'reacCap', 'reacCap-unit', 'capReactance', 'capReactance-unit']
+		.forEach(id => document.getElementById(id).addEventListener('input', calculateCapacitiveReactance));
+		
+		['indReacOmega', 'indReacOmega-unit', 'reacInd', 'reacInd-unit', 'indReactance', 'indReactance-unit']
+		.forEach(id => document.getElementById(id).addEventListener('input', calculateInductiveReactance));
+		
+		['relPermCoilInd', 'turnsCoilInd', 'radiusCoilInd', 'radiusCoilInd-unit', 'lengthCoilInd', 'lengthCoilInd-unit', 'coilInd', 'coilInd-unit']
+		.forEach(id => document.getElementById(id).addEventListener('input', calculateCoilInductance));
+		
 		document.querySelectorAll('input[name="lc-output"]').forEach(radio => {
 			radio.addEventListener('change', calculateResonantFrequency);
 		});
 		document.querySelectorAll('input[name="mfieldHH-output"]').forEach(radio => {
-			radio.addEventListener('change', calculateResonantFrequency);
+			radio.addEventListener('change', calculateHelmHoltzCoilField);
+		});
+		document.querySelectorAll('input[name="capReac-output"]').forEach(radio => {
+			radio.addEventListener('change', calculateCapacitiveReactance);
+		});
+		document.querySelectorAll('input[name="indReac-output"]').forEach(radio => {
+			radio.addEventListener('change', calculateInductiveReactance);
+		});
+		document.querySelectorAll('input[name="coilInd-output"]').forEach(radio => {
+			radio.addEventListener('change', calculateCoilInductance);
 		});
 	</script>
 </body>

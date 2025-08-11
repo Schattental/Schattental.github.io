@@ -16,12 +16,12 @@ function calculateHelmHoltzCoilField() {
 		
 	if (mode === 'turns') {
 		if (I > 0 && R > 0 && B > 0) {
-			const turnsout = ((8 / (5 * Math.sqrt(5))) * (u0 * I)/(R * B)) ** (-1)
+			const turnsout = ((8 / (5 * Math.sqrt(5))) * (u0 * I)/(R * B)) ** (-1);
 			document.getElementById('turns').value = turnsout.toFixed(2);
 		}
 	} else if (mode === 'current') {
 		if (B > 0 && R > 0 && turns > 0) {
-			const Iout = ((8 / (5 * Math.sqrt(5))) * (u0 * turns)/(R * B)) ** (-1)
+			const Iout = ((8 / (5 * Math.sqrt(5))) * (u0 * turns)/(R * B)) ** (-1);
 			const Iconv = Iout / currentUnit;
 			document.getElementById('current').value = Iconv.toFixed(6);
 		}
