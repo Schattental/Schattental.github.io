@@ -11,6 +11,8 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 	<link rel="manifest" href="/site.webmanifest" />
 	<!-- <a target="_blank" href="https://icons8.com/icon/qrOXrfUDKkOX/calculator">Calculator</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a> -->
+	<script id="MathJax-script" async
+		src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<h1>Plasma Physics Calculator Hub</h1>
@@ -31,7 +33,12 @@
 		
 		<details class="calculator">
 			<summary><strong>Magnetic Field of Helmholtz Coil</strong></summary>
-			
+			<p>
+				Equation to calculate the magnetic field of a circular Helmholtz coil:
+				\[B = {8 \over 5 \sqrt{5}} \cdot {μ_{0} \cdot N \cdot I \over R}\]
+				Where \(B\) is the magnetic field, \(μ_{0}\) is the permeability of free space, \(N\) is the number of turns,
+				\(I\) is the current and \(R\) is the radius of the coils (and distance between them).
+			</p>
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outTurnsHH" name="mfieldHH-output" value="turns">
@@ -108,19 +115,37 @@
 
 		<details class="calculator">
 			<summary><strong>Plasma Frequency Calculator</strong></summary>
-			<label for="density">Electron Density (n<sub>e</sub>):</label>
-			<input type="number" id="density" step="any">
-			<select id="density-unit">
-				<option value="1e6">cm⁻³</option>
-				<option value="1e0">m⁻³</option>
-			</select>
-
-			<label for="pfreq-unit">Output Frequency Unit:</label>
-			<select id="pfreq-unit">
-				<option value="1">Hz</option>
-				<option value="0.001">kHz</option>
-				<option value="0.000001">MHz</option>
-			</select>
+			<p>
+				Equation to calculate the plasma frequency:
+				\[\omega = \sqrt{(n_{e} \cdot e^2) \over{ (\varepsilon_{0} \cdot m_{e})}}\]
+				Where \(\omega\) is the plasma frequency, \(n_{e}\) is the electron number density, \(e\) is the elementary charge,
+				\(\varepsilon_{0}\) is the vacuum permittivity and \(m_{e}\) is the electron mass.
+			</p>
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outDensityPlasmaFreq" name="plasmaFreq-output" value="densityPlasmaFreq">
+					<label for="outDensityPlasmaFreq">Electron Density (\(n_{e}\)):</label>
+				</div>
+				<input type="number" id="densityPlasmaFreq" step="any">
+				<select id="densityPlasmaFreq-unit">
+					<option value="1e-6">cm⁻³</option>
+					<option value="1e0">m⁻³</option>
+				</select>
+			</div>
+			
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outPlasmaFreq" name="plasmaFreq-output" value="plasmaFreq" checked>
+					<label for="outPlasmaFreq">Plasma Frequency (\(\omega\)):</label>
+				</div>
+				<input type="number" id="plasmaFreq" step="any">
+				<select id="plasmaFreq-unit">
+					<option value="1">rad/s</option>
+					<option value="6.2831853072">Hz</option>
+					<option value="6283.1853072">kHz</option>
+					<option value="6283185.307200001">MHz</option>
+				</select>
+			</div>
 
 			<p id="plasma-result"></p>
 		</details>
@@ -163,14 +188,18 @@
 
 		<details class="calculator">
 			<summary><strong>LC Resonant Frequency Calculator</strong></summary>
-
+			<p>
+				Equation to calculate the LC resonant frequency:
+				\[\omega = {1 \over \sqrt{L \cdot C}}\]
+				Where \(\omega\) is the resonant frequency, \(L\) is the inductance and \(C\) is the capacitance.
+			</p>
 			<div class="input-group">
 				<div class="toggle-group">
-					<input type="radio" id="outInductance" name="lc-output" value="inductance">
-					<label for="outInductance">Inductance (L):</label>
+					<input type="radio" id="outLcInductance" name="lc-output" value="lcInd">
+					<label for="outLcInductance">Inductance (L):</label>
 				</div>
-				<input type="number" id="inductance" step="any">
-				<select id="inductance-unit">
+				<input type="number" id="lcInd" step="any">
+				<select id="lcInd-unit">
 					<option value="1">H</option>
 					<option value="0.001">mH</option>
 					<option value="0.000001">μH</option>
@@ -179,11 +208,11 @@
 
 			<div class="input-group">
 				<div class="toggle-group">
-					<input type="radio" id="outCapacitance" name="lc-output" value="capacitance">
-					<label for="outCapacitance">Capacitance (C):</label>
+					<input type="radio" id="outLcCapacitance" name="lc-output" value="lcCap">
+					<label for="outLcCapacitance">Capacitance (C):</label>
 				</div>
-				<input type="number" id="capacitance" step="any">
-				<select id="capacitance-unit">
+				<input type="number" id="lcCap" step="any">
+				<select id="lcCap-unit">
 					<option value="1">F</option>
 					<option value="0.000001">μF</option>
 					<option value="0.000000001">nF</option>
@@ -193,14 +222,15 @@
 
 			<div class="input-group">
 				<div class="toggle-group">
-					<input type="radio" id="outFrequencylc" name="lc-output" value="frequency" checked>
-					<label for="outFrequencylc">Frequency (f):</label>
+					<input type="radio" id="outLcFrequency" name="lc-output" value="lcFreq" checked>
+					<label for="outLcFrequency">Frequency (f):</label>
 				</div>
-				<input type="number" id="frequency" step="any">
-				<select id="freq-unit">
-					<option value="1">Hz</option>
-					<option value="0.001">kHz</option>
-					<option value="0.000001">MHz</option>
+				<input type="number" id="lcFreq" step="any">
+				<select id="lcFreq-unit">
+					<option value="1">rad/s</option>
+					<option value="6.2831853072">Hz</option>
+					<option value="6283.1853072">kHz</option>
+					<option value="6283185.307200001">MHz</option>
 				</select>
 			</div>
 		</details>
@@ -425,10 +455,10 @@
 		calculateInductiveReactance();
 		calculateCoilInductance();
 
-		['inductance', 'inductance-unit', 'capacitance', 'capacitance-unit', 'frequency', 'freq-unit']
+		['lcInd', 'lcInd-unit', 'lcCap', 'lcCap-unit', 'lcFreq', 'lcFreq-unit']
 		.forEach(id => document.getElementById(id).addEventListener('input', calculateResonantFrequency));
 
-		['density', 'density-unit', 'pfreq-unit']
+		['densityPlasmaFreq', 'densityPlasmaFreq-unit', 'plasmaFreq', 'plasmaFreq-unit']
 		.forEach(id => document.getElementById(id).addEventListener('input', calculatePlasmaFrequency));
 		
 		['turns', 'current', 'current-unit', 'radius', 'radius-unit', 'mfield', 'mfield-unit']
@@ -444,6 +474,9 @@
 		.forEach(id => document.getElementById(id).addEventListener('input', calculateCoilInductance));
 		
 		document.querySelectorAll('input[name="lc-output"]').forEach(radio => {
+			radio.addEventListener('change', calculateResonantFrequency);
+		});
+		document.querySelectorAll('input[name="plasmaFreq-output"]').forEach(radio => {
 			radio.addEventListener('change', calculateResonantFrequency);
 		});
 		document.querySelectorAll('input[name="mfieldHH-output"]').forEach(radio => {
