@@ -117,7 +117,7 @@
 			<summary><strong>Plasma Frequency Calculator</strong></summary>
 			<p>
 				Equation to calculate the plasma frequency:
-				\[\omega = \sqrt{(n_{e} \cdot e^2) \over{ (\varepsilon_{0} \cdot m_{e})}}\]
+				\[\omega = \sqrt{n_{e} \cdot e^2 \over{ \varepsilon_{0} \cdot m_{e}}}\]
 				Where \(\omega\) is the plasma frequency, \(n_{e}\) is the electron number density, \(e\) is the elementary charge,
 				\(\varepsilon_{0}\) is the vacuum permittivity and \(m_{e}\) is the electron mass.
 			</p>
@@ -252,7 +252,11 @@
 		<h2>Coil & Circuit Design</h2>
 		<details class="calculator">
 			<summary><strong>Capacitive Reactance Calculator</strong></summary>
-
+			<p>
+				Equation to calculate the capacitive reactance:
+				\[X_{C} = {1 \over{\omega \cdot C}}\]
+				Where \(X_{C}\) is the capacitive reactance, \(\omega\) is the angular frequency and \(C\) is the capacitance.
+			</p>
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outCapReacOmega" name="capReac-output" value="capReacOmega">
@@ -296,7 +300,11 @@
 		</details>
 		<details class="calculator">
 			<summary><strong>Inductive Reactance Calculator</strong></summary>
-
+			<p>
+				Equation to calculate the inductive reactance:
+				\[X_{L} = {\omega \cdot L}\]
+				Where \(X_{L}\) is the inductive reactance, \(\omega\) is the angular frequency and \(L\) is the inductance.
+			</p>
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outIndReacOmega" name="indReac-output" value="indReacOmega">
@@ -341,7 +349,13 @@
 		</details>
 		<details class="calculator">
 			<summary><strong>Coil Inductance Calculator</strong></summary>
-
+			<p>
+				Equation to calculate the inductance of a coil:
+				\[L = {{\mu_{r} \cdot \mu_{0} \cdot N^2 \cdot R^2 \cdot \pi} \over l}\]
+				Where \(L\) is the coil inductance, \(\mu_{r}\) is the relative permeability of the core, 
+				\(\mu_{0}\) is the permeability of free space, \(N\) is the number of turns, \(R\) is the coil's cross-sectional radius
+				and \(l\) is the length of the coil.
+			</p>
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outRelPermCoilInd" name="coilInd-output" value="relPermCoilInd">
