@@ -18,7 +18,7 @@
 	<h1>Plasma Physics Calculator Hub</h1>
 	<div class="tabs">
 		<button class="tab-button" onclick="showTab('magnetic')">Magnetic & Electric Fields</button>
-		<button class="tab-button" onclick="showTab('plasma')">Plasma Properties</button>
+		<button class="tab-button" onclick="showTab('plasma')">Plasma Properties & Units</button>
 		<button class="tab-button" onclick="showTab('heating')">Heating & Power</button>
 		<button class="tab-button" onclick="showTab('instabilities')">Instabilities & Confinement</button>
 		<button class="tab-button" onclick="showTab('waves')">Wave Propagation</button>
@@ -54,7 +54,7 @@
 				</div>
 				<input type="number" id="current" step="any">
 				<select id="current-unit">
-					<option value="0.000001">uA</option>
+					<option value="0.000001">μA</option>
 					<option value="0.001">mA</option>
 					<option value="1e0">A</option>
 				</select>
@@ -72,7 +72,7 @@
 					<option value="1e0">m</option>
 				</select>
 			</div>
-
+			
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outmfieldHH" name="mfieldHH-output" value="mfield" checked>
@@ -102,7 +102,162 @@
 	</div>
 
 	<div id="plasma" class="tab-content">
-		<h2>Plasma Properties</h2>
+		<h2>Plasma Properties & Units</h2>
+		<details class="calculator">
+			<summary><strong>Pressure Unit Conversion</strong></summary>
+			<p>
+				Pascal to Bar:
+				\(B = {P \over 1e5}\)
+				<br>
+				Pascal to Torr:
+				\(T = {P \over 133.322}\)
+				<br>
+				Pascal to Atmosphere:
+				\(A = {P \over 101325}\)
+				<br>
+				Pascal to Kilogram-force per Square Centimeter:
+				\(Kgf = {P \over 98066.5}\)
+				<br>
+				Pascal to Inches of Mercury:
+				\(inHg = {P \over 3386.39}\)
+				<br>
+				Pascal to Pound per Square Inch:
+				\(Psi = {P \over 6894.76}\)
+				<br>
+				Pascal to Pound per Square Foot:
+				\(Psf = {P \over 47.8803}\)
+				<br>
+				Pascal to Millimeters of Water Column at 4°C:
+				\(mmH2 = {P \over 9.80665}\)
+				<br>
+				Pascal to Inches of Water Column at 4°C:
+				\(inH2 = {P \over 249.08891}\)
+			</p>
+			<div class="input-group">
+				<label for="pressConvPascal">Pascal (\(P\)):</label>
+				<input type="number" id="pressConvPascal" step="any">
+				<select id="pressConvPascal-unit">
+					<option value="1">Pa</option>
+					<option value="1e3">kPa</option>
+					<option value="1e6">MPa</option>
+					<option value="1e9">GPa</option>
+				</select>
+			</div>
+			
+			<div class="input-group">
+				<label for="pressConvBar">Bar (\(B\)):</label>
+				<input type="number" id="pressConvBar" step="any">
+				<select id="pressConvBar-unit">
+					<option value="1">bar</option>
+					<option value="1e-3">mbar</option>
+					<option value="1e-6">μbar</option>
+					<option value="1e-9">nbar</option>
+				</select>
+			</div>
+			
+			<div class="input-group">
+				<label for="pressConvTorr">Torr (\(T\)):</label>
+				<input type="number" id="pressConvTorr" step="any">
+				<select id="pressConvTorr-unit">
+					<option value="1">torr</option>
+					<option value="1e-3">mtorr</option>
+					<option value="1e-6">μtorr</option>
+					<option value="1e-9">ntorr</option>
+				</select>
+			</div>
+			
+			<div class="input-group">
+				<label for="pressConvAtm">Atmosphere (\(A\)):</label>
+				<input type="number" id="pressConvAtm" step="any">
+				\(atm\)
+			</div>
+			
+			<div class="input-group">
+				<label for="pressConvKgf">Kilogram-force per Square Centimeter (\(Kgf\)):</label>
+				<input type="number" id="pressConvKgf" step="any">
+				\(kgf\)
+			</div>
+			
+			<div class="input-group">
+				<label for="pressConvInHg">Inches of Mercury (\(InM\)):</label>
+				<input type="number" id="pressConvInHg" step="any">
+				\(inHg\)
+			</div>
+			
+			<div class="input-group">
+				<label for="pressConvPsi">Pound per Square Inch (\(Psi\)):</label>
+				<input type="number" id="pressConvPsi" step="any">
+				\(psi\)
+			</div>
+			
+			<div class="input-group">
+				<label for="pressConvPsf">Pound per Square Foot (\(Psf\)):</label>
+				<input type="number" id="pressConvPsf" step="any">
+				\(psf\)
+			</div>
+			
+			<div class="input-group">
+				<label for="pressConvMmH2">Millimeters of Water Column at 4°C (\(mmH2\)):</label>
+				<input type="number" id="pressConvMmH2" step="any">
+				\(mmH_{2}O\)
+			</div>
+			
+			<div class="input-group">
+				<label for="pressConvInH2">Inches of Water Column at 4°C (\(inH2\)):</label>
+				<input type="number" id="pressConvInH2" step="any">
+				\(inH_{2}O\)
+			</div>
+		</details>
+		
+		<details class="calculator">
+			<summary><strong>Temperature Unit Conversion</strong></summary>
+			<p>
+				Convert Celsius to Kelvin:
+				\(K = C + 273.15\)
+				<br>
+				Convert Celsius to Fahrenheit:
+				\(F = C \cdot {9 \over 5} + 32\)
+				<br>
+				Convert Celsius to Rankine:
+				\(R = C \cdot {9 \over 5} + 491.67\)
+				<br>
+				Convert Kelvin to eV:
+				\(e = K \cdot {1 \over 11600}\)
+			</p>
+			<div class="input-group">
+				<label for="tempConvCels">Degrees Celsius (\(C\)):</label>
+				<input type="number" id="tempConvCels" step="any">
+				\(°C\)
+			</div>
+			
+			<div class="input-group">
+				<label for="tempConvKelv">Kelvin (\(K\)):</label>
+				<input type="number" id="tempConvKelv" step="any">
+				<select id="tempConvKelv-unit">
+					<option value="1">K</option>
+					<option value="0.001">mK</option>
+				</select>
+			</div>
+			
+			<div class="input-group">
+				<label for="tempConvEV">Electron Volts (\(e\)):</label>
+				<input type="number" id="tempConvEV" step="any">
+				\(eV\)
+			</div>
+			
+			<div class="input-group">
+				<label for="tempConvFahren">Degrees Fahrenheit (\(F\)):</label>
+				<input type="number" id="tempConvFahren" step="any">
+				\(°F\)
+			</div>
+			
+			<div class="input-group">
+				<label for="tempConvRank">Degrees Rankine (\(R\)):</label>
+				<input type="number" id="tempConvRank" step="any">
+				\(°R\)
+			</div>
+		</details>
+		
 		<ul>
 			<li>Plasma Frequency Calculator (example below)</li>
 			<li>Debye Length</li>
@@ -112,7 +267,7 @@
 			<li>Coulomb Logarithm</li>
 			<li>Spitzer Resistivity</li>
 		</ul>
-
+		
 		<details class="calculator">
 			<summary><strong>Plasma Frequency Calculator</strong></summary>
 			<p>
@@ -146,8 +301,6 @@
 					<option value="6283185.307200001">MHz</option>
 				</select>
 			</div>
-
-			<p id="plasma-result"></p>
 		</details>
 	</div>
 	
@@ -455,6 +608,8 @@
 	<script src="capReactance.js"></script>
 	<script src="indReactance.js"></script>
 	<script src="coilInductance.js"></script>
+	<script src="temperatureConversion.js"></script>
+	<script src="pressureConversion.js"></script>
 	<script>
 		function showTab(id) {
 			document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
@@ -468,6 +623,8 @@
 		calculateCapacitiveReactance();
 		calculateInductiveReactance();
 		calculateCoilInductance();
+		calculateTemperatureConversion();
+		calculatePressureConversion();
 
 		['lcInd', 'lcInd-unit', 'lcCap', 'lcCap-unit', 'lcFreq', 'lcFreq-unit']
 		.forEach(id => document.getElementById(id).addEventListener('input', calculateResonantFrequency));
