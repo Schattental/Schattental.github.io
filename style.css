@@ -153,11 +153,11 @@ button:hover {
 /* 1) Give each tab button its own neon color */
 .tabs .tab-button:nth-child(1) { border-color: #00d4ff; color: #00d4ff; } /* Magnetic */
 .tabs .tab-button:nth-child(2) { border-color: #39ff88; color: #39ff88; } /* Plasma */
-.tabs .tab-button:nth-child(3) { border-color: #ff4fd8; color: #ff4fd8; } /* Heating */
+.tabs .tab-button:nth-child(3) { border-color: #ff4fd8; color: #ff4fd8; } /* Circuits RLC*/
 .tabs .tab-button:nth-child(4) { border-color: #b266ff; color: #b266ff; } /* Instabilities */
 .tabs .tab-button:nth-child(5) { border-color: #4da6ff; color: #4da6ff; } /* Waves */
 .tabs .tab-button:nth-child(6) { border-color: #ffe94d; color: #ffe94d; } /* Diagnostics */
-.tabs .tab-button:nth-child(7) { border-color: #ff9f1c; color: #ff9f1c; } /* Circuits */
+.tabs .tab-button:nth-child(7) { border-color: #ff9f1c; color: #ff9f1c; } /* Heating*/
 .tabs .tab-button:nth-child(8) { border-color: #ff6b4a; color: #ff6b4a; } /* Thermal */
 .tabs .tab-button:nth-child(9) { border-color: #ff5cff; color: #ff5cff; } /* Advanced */
 
@@ -174,11 +174,11 @@ button:hover {
 /* 2) Set a neon variable for each category section */
 #magnetic      { --neon: #00d4ff; --neon-glow: #00d4ff66; }
 #plasma        { --neon: #39ff88; --neon-glow: #39ff8866; }
-#heating       { --neon: #ff4fd8; --neon-glow: #ff4fd866; }
+#circuits      { --neon: #ff4fd8; --neon-glow: #ff4fd866; }
 #instabilities { --neon: #b266ff; --neon-glow: #b266ff66; }
 #waves         { --neon: #4da6ff; --neon-glow: #4da6ff66; }
 #diagnostics   { --neon: #ffe94d; --neon-glow: #ffe94d66; }
-#circuits      { --neon: #ff9f1c; --neon-glow: #ff9f1c66; }
+#heating       { --neon: #ff9f1c; --neon-glow: #ff9f1c66; }
 #thermal       { --neon: #ff6b4a; --neon-glow: #ff6b4a66; }
 #advanced      { --neon: #ff5cff; --neon-glow: #ff5cff66; }
 

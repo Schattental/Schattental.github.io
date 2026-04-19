@@ -19,11 +19,11 @@
 	<div class="tabs">
 		<button class="tab-button" onclick="showTab('magnetic')">Magnetic & Electric Fields</button>
 		<button class="tab-button" onclick="showTab('plasma')">Plasma Properties & Units</button>
+		<button class="tab-button" onclick="showTab('circuits')">RLC</button>
 		<button class="tab-button" onclick="showTab('heating')">Heating & Power</button>
 		<button class="tab-button" onclick="showTab('instabilities')">Instabilities & Confinement</button>
 		<button class="tab-button" onclick="showTab('waves')">Wave Propagation</button>
 		<button class="tab-button" onclick="showTab('diagnostics')">Diagnostics</button>
-		<button class="tab-button" onclick="showTab('circuits')">Coil & Circuit Design</button>
 		<button class="tab-button" onclick="showTab('thermal')">Thermal & Engineering</button>
 		<button class="tab-button" onclick="showTab('advanced')">Advanced Theory</button>
 	</div>
@@ -331,17 +331,7 @@
 				\(°R\)
 			</div>
 		</details>
-		
-		<ul>
-			<li>Plasma Frequency Calculator (example below)</li>
-			<li>Debye Length</li>
-			<li>Plasma Beta (β)</li>
-			<li>Thermal Velocity</li>
-			<li>Mean Free Path</li>
-			<li>Coulomb Logarithm</li>
-			<li>Spitzer Resistivity</li>
-		</ul>
-		
+
 		<details class="calculator">
 			<summary><strong>Plasma Frequency Calculator</strong></summary>
 			<p>
@@ -376,6 +366,15 @@
 				</select>
 			</div>
 		</details>
+
+		<ul>
+			<li>Debye Length</li>
+			<li>Plasma Beta (β)</li>
+			<li>Thermal Velocity</li>
+			<li>Mean Free Path</li>
+			<li>Coulomb Logarithm</li>
+			<li>Spitzer Resistivity</li>
+		</ul>
 	</div>
 	
 	<div id="heating" class="tab-content">
@@ -406,61 +405,11 @@
 	<div id="waves" class="tab-content">
 		<h2>Wave Propagation</h2>
 		<ul>
-		  <li>LC Resonant Frequency (example below)</li>
 		  <li>Lower Hybrid Frequency</li>
 		  <li>Upper Hybrid Frequency</li>
 		  <li>Cold Plasma Refractive Index</li>
 		  <li>Dispersion Relation Solver</li>
 		</ul>
-
-		<details class="calculator">
-			<summary><strong>LC Resonant Frequency Calculator</strong></summary>
-			<p>
-				Equation to calculate the LC resonant frequency:
-				\[\omega = {1 \over \sqrt{L \cdot C}}\]
-				Where \(\omega\) is the resonant frequency, \(L\) is the inductance and \(C\) is the capacitance.
-			</p>
-			<div class="input-group">
-				<div class="toggle-group">
-					<input type="radio" id="outLcInductance" name="lc-output" value="lcInd">
-					<label for="outLcInductance">Inductance (L):</label>
-				</div>
-				<input type="number" id="lcInd" step="any">
-				<select id="lcInd-unit">
-					<option value="1">H</option>
-					<option value="0.001">mH</option>
-					<option value="0.000001">μH</option>
-				</select>
-			</div>
-
-			<div class="input-group">
-				<div class="toggle-group">
-					<input type="radio" id="outLcCapacitance" name="lc-output" value="lcCap">
-					<label for="outLcCapacitance">Capacitance (C):</label>
-				</div>
-				<input type="number" id="lcCap" step="any">
-				<select id="lcCap-unit">
-					<option value="1">F</option>
-					<option value="0.000001">μF</option>
-					<option value="0.000000001">nF</option>
-					<option value="0.000000000001">pF</option>
-				</select>
-			</div>
-
-			<div class="input-group">
-				<div class="toggle-group">
-					<input type="radio" id="outLcFrequency" name="lc-output" value="lcFreq" checked>
-					<label for="outLcFrequency">Frequency (f):</label>
-				</div>
-				<input type="number" id="lcFreq" step="any">
-				<select id="lcFreq-unit">
-					<option value="1">rad/s</option>
-					<option value="6.2831853072">Hz</option>
-					<option value="6283.1853072">kHz</option>
-					<option value="6283185.307200001">MHz</option>
-				</select>
-			</div>
-		</details>
 	</div>
 		
 	<div id="diagnostics" class="tab-content">
@@ -640,6 +589,56 @@
 				</select>
 			</div>
 		</details>
+
+		<details class="calculator">
+			<summary><strong>LC Resonant Frequency Calculator</strong></summary>
+			<p>
+				Equation to calculate the LC resonant frequency:
+				\[\omega = {1 \over \sqrt{L \cdot C}}\]
+				Where \(\omega\) is the resonant frequency, \(L\) is the inductance and \(C\) is the capacitance.
+			</p>
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outLcInductance" name="lc-output" value="lcInd">
+					<label for="outLcInductance">Inductance (L):</label>
+				</div>
+				<input type="number" id="lcInd" step="any">
+				<select id="lcInd-unit">
+					<option value="1">H</option>
+					<option value="0.001">mH</option>
+					<option value="0.000001">μH</option>
+				</select>
+			</div>
+
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outLcCapacitance" name="lc-output" value="lcCap">
+					<label for="outLcCapacitance">Capacitance (C):</label>
+				</div>
+				<input type="number" id="lcCap" step="any">
+				<select id="lcCap-unit">
+					<option value="1">F</option>
+					<option value="0.000001">μF</option>
+					<option value="0.000000001">nF</option>
+					<option value="0.000000000001">pF</option>
+				</select>
+			</div>
+
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outLcFrequency" name="lc-output" value="lcFreq" checked>
+					<label for="outLcFrequency">Frequency (f):</label>
+				</div>
+				<input type="number" id="lcFreq" step="any">
+				<select id="lcFreq-unit">
+					<option value="1">rad/s</option>
+					<option value="6.2831853072">Hz</option>
+					<option value="6283.1853072">kHz</option>
+					<option value="6283185.307200001">MHz</option>
+				</select>
+			</div>
+		</details>
+
 		<ul>
 			<li>Inductance of Toroidal Coils</li>
 			<li>Self-Resonance of Coils</li>
