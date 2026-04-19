@@ -41,19 +41,19 @@
 			</p>
 			<div class="input-group">
 				<div class="toggle-group">
-					<input type="radio" id="outTurnsHH" name="mfieldHH-output" value="turns">
+					<input type="radio" id="outTurnsHH" name="mfieldHH-output" value="turnsHH">
 					<label for="outTurnsHH">Turns (N):</label>
 				</div>
-				<input type="number" id="turns" step="any">
+				<input type="number" id="turnsHH" step="any">
 			</div>
 			
 			<div class="input-group">
 				<div class="toggle-group">
-					<input type="radio" id="outCurrentHH" name="mfieldHH-output" value="current">
+					<input type="radio" id="outCurrentHH" name="mfieldHH-output" value="currentHH">
 					<label for="outCurrentHH">Current (I):</label>
 				</div>
-				<input type="number" id="current" step="any">
-				<select id="current-unit">
+				<input type="number" id="currentHH" step="any">
+				<select id="current-unitHH">
 					<option value="0.000001">μA</option>
 					<option value="0.001">mA</option>
 					<option value="1e0">A</option>
@@ -62,11 +62,11 @@
 			
 			<div class="input-group">
 				<div class="toggle-group">
-					<input type="radio" id="outRadiusHH" name="mfieldHH-output" value="radius">
+					<input type="radio" id="outRadiusHH" name="mfieldHH-output" value="radiusHH">
 					<label for="outRadiusHH">Radius (R):</label>
 				</div>
-				<input type="number" id="radius" step="any">
-				<select id="radius-unit">
+				<input type="number" id="radiusHH" step="any">
+				<select id="radius-unitHH">
 					<option value="0.001">mm</option>
 					<option value="0.01">cm</option>
 					<option value="1e0">m</option>
@@ -75,11 +75,85 @@
 			
 			<div class="input-group">
 				<div class="toggle-group">
-					<input type="radio" id="outmfieldHH" name="mfieldHH-output" value="mfield" checked>
+					<input type="radio" id="outmfieldHH" name="mfieldHH-output" value="mfieldHH" checked>
 					<label for="outmfieldHH">Magnetic Field (B):</label>
 				</div>
-				<input type="number" id="mfield" step="any">
-				<select id="mfield-unit">
+				<input type="number" id="mfieldHH" step="any">
+				<select id="mfield-unitHH">
+					<option value="10000000">mG</option>
+					<option value="10000">G</option>
+					<option value="1">T</option>
+				</select>
+			</div>
+		</details>
+		<details class="calculator">
+			<summary><strong>Magnetic Field from Rectangular Loop</strong></summary>
+			<p>
+				Equation to calculate the magnetic field of a rectangular loop:
+				\[
+				B = N\cdot μ_{0}\cdot I\cdot \frac{2}{\pi} \cdot \frac{a \cdot b}{\sqrt{4x^2 + a^2 + b^2}} \cdot \left( \frac{1}{4x^2 + a^2} + \frac{1}{4x^2 + b^2} \right)
+				\]
+				Where \(B\) is the magnetic field, \(μ_{0}\) is the permeability of free space, \(N\) is the number of turns,
+				\(I\) is the current, \(x\) is the distance from the center of the loop along the normal axis and \(a\) as well as \(b\) are the sides of the rectangle (\(a\) = \(b\) for square).
+			</p>
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outTurnsRL" name="mfieldRL-output" value="turnsRL">
+					<label for="outTurnsRL">Turns (N):</label>
+				</div>
+				<input type="number" id="turnsRL" step="any">
+			</div>
+			
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outCurrentRL" name="mfieldRL-output" value="currentRL">
+					<label for="outCurrentRL">Current (I):</label>
+				</div>
+				<input type="number" id="currentRL" step="any">
+				<select id="current-unitRL">
+					<option value="0.000001">μA</option>
+					<option value="0.001">mA</option>
+					<option value="1e0">A</option>
+				</select>
+			</div>
+			
+			<div class="input-group">
+				<label for="outDistanceRL">Distance (x):</label>
+				<input type="number" id="distanceRL" step="any">
+				<select id="distance-unitRL">
+					<option value="0.001">mm</option>
+					<option value="0.01">cm</option>
+					<option value="1e0">m</option>
+				</select>
+			</div>
+
+			<div class="input-group">
+				<label for="outLengthaRL">Side Length (a):</label>
+				<input type="number" id="lengthaRL" step="any">
+				<select id="lengtha-unitRL">
+					<option value="0.001">mm</option>
+					<option value="0.01">cm</option>
+					<option value="1e0">m</option>
+				</select>
+			</div>
+
+			<div class="input-group">
+				<label for="outLengthbRL">Side Length (b):</label>
+				<input type="number" id="lengthbRL" step="any">
+				<select id="lengthb-unitRL">
+					<option value="0.001">mm</option>
+					<option value="0.01">cm</option>
+					<option value="1e0">m</option>
+				</select>
+			</div>
+			
+			<div class="input-group">
+				<div class="toggle-group">
+					<input type="radio" id="outmfieldRL" name="mfieldRL-output" value="mfieldRL" checked>
+					<label for="outmfieldRL">Magnetic Field (B):</label>
+				</div>
+				<input type="number" id="mfieldRL" step="any">
+				<select id="mfield-unitRL">
 					<option value="10000000">mG</option>
 					<option value="10000">G</option>
 					<option value="1">T</option>
@@ -604,6 +678,7 @@
 		
 	<script src="lcCalculator.js"></script>
 	<script src="hhCoilField.js"></script>
+	<script src="rlField.js"></script>
 	<script src="plasmaFreq.js"></script>
 	<script src="capReactance.js"></script>
 	<script src="indReactance.js"></script>
@@ -620,6 +695,7 @@
 		calculateResonantFrequency();
 		calculatePlasmaFrequency();
 		calculateHelmHoltzCoilField();
+		calculateRectangularLoopField();
 		calculateCapacitiveReactance();
 		calculateInductiveReactance();
 		calculateCoilInductance();
@@ -632,8 +708,11 @@
 		['densityPlasmaFreq', 'densityPlasmaFreq-unit', 'plasmaFreq', 'plasmaFreq-unit']
 		.forEach(id => document.getElementById(id).addEventListener('input', calculatePlasmaFrequency));
 		
-		['turns', 'current', 'current-unit', 'radius', 'radius-unit', 'mfield', 'mfield-unit']
+		['turnsHH', 'currentHH', 'current-unitHH', 'radiusHH', 'radius-unitHH', 'mfieldHH', 'mfield-unitHH']
 		.forEach(id => document.getElementById(id).addEventListener('input', calculateHelmHoltzCoilField));
+
+		['turnsRL', 'currentRL', 'current-unitRL', 'distanceRL', 'distance-unitRL', 'lengthaRL', 'lengtha-unitRL', 'lengthbRL', 'lengthb-unitRL', 'mfieldRL', 'mfield-unitRL']
+		.forEach(id => document.getElementById(id).addEventListener('input', calculateRectangularLoopField));
 		
 		['capReacOmega', 'capReacOmega-unit', 'reacCap', 'reacCap-unit', 'capReactance', 'capReactance-unit']
 		.forEach(id => document.getElementById(id).addEventListener('input', calculateCapacitiveReactance));
@@ -648,10 +727,13 @@
 			radio.addEventListener('change', calculateResonantFrequency);
 		});
 		document.querySelectorAll('input[name="plasmaFreq-output"]').forEach(radio => {
-			radio.addEventListener('change', calculateResonantFrequency);
+			radio.addEventListener('change', calculatePlasmaFrequency);
 		});
 		document.querySelectorAll('input[name="mfieldHH-output"]').forEach(radio => {
 			radio.addEventListener('change', calculateHelmHoltzCoilField);
+		});
+		document.querySelectorAll('input[name="mfieldRL-output"]').forEach(radio => {
+			radio.addEventListener('change', calculateRectangularLoopField);
 		});
 		document.querySelectorAll('input[name="capReac-output"]').forEach(radio => {
 			radio.addEventListener('change', calculateCapacitiveReactance);
