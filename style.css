@@ -228,3 +228,23 @@ button:hover {
   border-color: var(--neon, #00d4ff);
   box-shadow: 0 0 10px var(--neon-glow, #00d4ff66);
 }
+
+li a {
+  color: #00d4ff;
+  text-decoration: none;
+}
+
+li a:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 8px #00d4ff88;
+}
+
+h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h2 a:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 8px currentColor;
+}

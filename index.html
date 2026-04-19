@@ -32,7 +32,7 @@
 		<h2>Magnetic & Electric Fields</h2>
 		
 		<details class="calculator">
-			<summary><strong>Magnetic Field of Helmholtz Coil</strong></summary>
+			<summary><strong>Magnetic Field of Helmholtz Coil \(B_{HH}\)</strong></summary>
 			<p>
 				Equation to calculate the magnetic field of a circular Helmholtz coil:
 				\[B = {8 \over 5 \sqrt{5}} \cdot {μ_{0} \cdot N \cdot I \over R}\]
@@ -42,7 +42,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outTurnsHH" name="mfieldHH-output" value="turnsHH">
-					<label for="outTurnsHH">Turns (N):</label>
+					<label for="outTurnsHH">Turns (\(N\)):</label>
 				</div>
 				<input type="number" id="turnsHH" step="any">
 			</div>
@@ -50,7 +50,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outCurrentHH" name="mfieldHH-output" value="currentHH">
-					<label for="outCurrentHH">Current (I):</label>
+					<label for="outCurrentHH">Current (\(I\)):</label>
 				</div>
 				<input type="number" id="currentHH" step="any">
 				<select id="current-unitHH">
@@ -63,7 +63,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outRadiusHH" name="mfieldHH-output" value="radiusHH">
-					<label for="outRadiusHH">Radius (R):</label>
+					<label for="outRadiusHH">Radius (\(R\)):</label>
 				</div>
 				<input type="number" id="radiusHH" step="any">
 				<select id="radius-unitHH">
@@ -76,7 +76,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outmfieldHH" name="mfieldHH-output" value="mfieldHH" checked>
-					<label for="outmfieldHH">Magnetic Field (B):</label>
+					<label for="outmfieldHH">Magnetic Field (\(B\)):</label>
 				</div>
 				<input type="number" id="mfieldHH" step="any">
 				<select id="mfield-unitHH">
@@ -87,7 +87,7 @@
 			</div>
 		</details>
 		<details class="calculator">
-			<summary><strong>Magnetic Field from Rectangular Loop</strong></summary>
+			<summary><strong>Magnetic Field from Rectangular Loop \(B_{RL}\)</strong></summary>
 			<p>
 				Equation to calculate the magnetic field of a rectangular loop:
 				\[
@@ -99,7 +99,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outTurnsRL" name="mfieldRL-output" value="turnsRL">
-					<label for="outTurnsRL">Turns (N):</label>
+					<label for="outTurnsRL">Turns (\(N\)):</label>
 				</div>
 				<input type="number" id="turnsRL" step="any">
 			</div>
@@ -107,7 +107,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outCurrentRL" name="mfieldRL-output" value="currentRL">
-					<label for="outCurrentRL">Current (I):</label>
+					<label for="outCurrentRL">Current (\(I\)):</label>
 				</div>
 				<input type="number" id="currentRL" step="any">
 				<select id="current-unitRL">
@@ -118,7 +118,7 @@
 			</div>
 			
 			<div class="input-group">
-				<label for="outDistanceRL">Distance (x):</label>
+				<label for="outDistanceRL">Distance (\(x\)):</label>
 				<input type="number" id="distanceRL" step="any">
 				<select id="distance-unitRL">
 					<option value="0.001">mm</option>
@@ -128,7 +128,7 @@
 			</div>
 
 			<div class="input-group">
-				<label for="outLengthaRL">Side Length (a):</label>
+				<label for="outLengthaRL">Side Length (\(a\)):</label>
 				<input type="number" id="lengthaRL" step="any">
 				<select id="lengtha-unitRL">
 					<option value="0.001">mm</option>
@@ -138,7 +138,7 @@
 			</div>
 
 			<div class="input-group">
-				<label for="outLengthbRL">Side Length (b):</label>
+				<label for="outLengthbRL">Side Length (\(b\)):</label>
 				<input type="number" id="lengthbRL" step="any">
 				<select id="lengthb-unitRL">
 					<option value="0.001">mm</option>
@@ -150,7 +150,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outmfieldRL" name="mfieldRL-output" value="mfieldRL" checked>
-					<label for="outmfieldRL">Magnetic Field (B):</label>
+					<label for="outmfieldRL">Magnetic Field (\(B\)):</label>
 				</div>
 				<input type="number" id="mfieldRL" step="any">
 				<select id="mfield-unitRL">
@@ -178,7 +178,7 @@
 	<div id="plasma" class="tab-content">
 		<h2>Plasma Properties & Units</h2>
 		<details class="calculator">
-			<summary><strong>Pressure Unit Conversion</strong></summary>
+			<summary><strong>Pressure Unit Conversion \(P\)</strong></summary>
 			<p>
 				Pascal to Bar:
 				\(B = {P \over 1e5}\)
@@ -284,7 +284,7 @@
 		</details>
 		
 		<details class="calculator">
-			<summary><strong>Temperature Unit Conversion</strong></summary>
+			<summary><strong>Temperature Unit Conversion \(°C\)</strong></summary>
 			<p>
 				Convert Celsius to Kelvin:
 				\(K = C + 273.15\)
@@ -333,7 +333,7 @@
 		</details>
 
 		<details class="calculator">
-			<summary><strong>Plasma Frequency Calculator</strong></summary>
+			<summary><strong>Plasma Frequency Calculator \(\omega\)</strong></summary>
 			<p>
 				Equation to calculate the plasma frequency:
 				\[\omega = \sqrt{n_{e} \cdot e^2 \over{ \varepsilon_{0} \cdot m_{e}}}\]
@@ -427,7 +427,7 @@
 	<div id="circuits" class="tab-content">
 		<h2>Coil & Circuit Design</h2>
 		<details class="calculator">
-			<summary><strong>Capacitive Reactance Calculator</strong></summary>
+			<summary><strong>Capacitive Reactance Calculator \(X_{C}\)</strong></summary>
 			<p>
 				Equation to calculate the capacitive reactance:
 				\[X_{C} = {1 \over{\omega \cdot C}}\]
@@ -436,7 +436,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outCapReacOmega" name="capReac-output" value="capReacOmega">
-					<label for="outCapReacOmega">Frequency (F or omega):</label>
+					<label for="outCapReacOmega">Frequency (\(\omega\)):</label>
 				</div>
 				<input type="number" id="capReacOmega" step="any">
 				<select id="capReacOmega-unit">
@@ -450,7 +450,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outReacCap" name="capReac-output" value="reacCap">
-					<label for="outReacCap">Capacitance (C):</label>
+					<label for="outReacCap">Capacitance (\(C\)):</label>
 				</div>
 				<input type="number" id="reacCap" step="any">
 				<select id="reacCap-unit">
@@ -464,7 +464,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outCapReactance" name="capReac-output" value="capReactance" checked>
-					<label for="outCapReactance">Reactance (X):</label>
+					<label for="outCapReactance">Reactance (\(X_{C}\)):</label>
 				</div>
 				<input type="number" id="capReactance" step="any">
 				<select id="capReactance-unit">
@@ -475,7 +475,7 @@
 			</div>
 		</details>
 		<details class="calculator">
-			<summary><strong>Inductive Reactance Calculator</strong></summary>
+			<summary><strong>Inductive Reactance Calculator \(X_{L}\)</strong></summary>
 			<p>
 				Equation to calculate the inductive reactance:
 				\[X_{L} = {\omega \cdot L}\]
@@ -484,7 +484,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outIndReacOmega" name="indReac-output" value="indReacOmega">
-					<label for="outIndReacOmega">Frequency (F or omega):</label>
+					<label for="outIndReacOmega">Frequency (\(\omega\)):</label>
 				</div>
 				<input type="number" id="indReacOmega" step="any">
 				<select id="indReacOmega-unit">
@@ -498,7 +498,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outReacInd" name="indReac-output" value="reacInd">
-					<label for="outReacInd">Inductance (L):</label>
+					<label for="outReacInd">Inductance (\(L\)):</label>
 				</div>
 				<input type="number" id="reacInd" step="any">
 				<select id="reacInd-unit">
@@ -513,7 +513,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outIndReactance" name="indReac-output" value="indReactance" checked>
-					<label for="outIndReactance">Reactance (X):</label>
+					<label for="outIndReactance">Reactance (\(X_{L}\)):</label>
 				</div>
 				<input type="number" id="indReactance" step="any">
 				<select id="indReactance-unit">
@@ -524,7 +524,7 @@
 			</div>
 		</details>
 		<details class="calculator">
-			<summary><strong>Coil Inductance Calculator</strong></summary>
+			<summary><strong>Coil Inductance Calculator \(L\)</strong></summary>
 			<p>
 				Equation to calculate the inductance of a coil:
 				\[L = {{\mu_{r} \cdot \mu_{0} \cdot N^2 \cdot R^2 \cdot \pi} \over l}\]
@@ -535,7 +535,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outRelPermCoilInd" name="coilInd-output" value="relPermCoilInd">
-					<label for="outRelPermCoilInd">Relative Permeability of Core (μr):</label>
+					<label for="outRelPermCoilInd">Relative Permeability of Core (\(\mu_{r}\)):</label>
 				</div>
 				<input type="number" id="relPermCoilInd" step="any">
 			</div>
@@ -543,7 +543,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outTurnsCoilInd" name="coilInd-output" value="turnsCoilInd">
-					<label for="outTurnsCoilInd">Turns (N):</label>
+					<label for="outTurnsCoilInd">Turns (\(N\)):</label>
 				</div>
 				<input type="number" id="turnsCoilInd" step="any">
 			</div>
@@ -551,7 +551,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outRadiusCoilInd" name="coilInd-output" value="radiusCoilInd">
-					<label for="outRadiusCoilInd">Radius (R):</label>
+					<label for="outRadiusCoilInd">Radius (\(R\)):</label>
 				</div>
 				<input type="number" id="radiusCoilInd" step="any">
 				<select id="radiusCoilInd-unit">
@@ -564,7 +564,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outLengthCoilInd" name="coilInd-output" value="lengthCoilInd">
-					<label for="outLengthCoilInd">Length of Coil (l):</label>
+					<label for="outLengthCoilInd">Length of Coil (\(l\)):</label>
 				</div>
 				<input type="number" id="lengthCoilInd" step="any">
 				<select id="lengthCoilInd-unit">
@@ -577,7 +577,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outCoilInd" name="coilInd-output" value="coilInd" checked>
-					<label for="outCoilInd">Coil Inductance (L):</label>
+					<label for="outCoilInd">Coil Inductance (\(L\)):</label>
 				</div>
 				<input type="number" id="coilInd" step="any">
 				<select id="coilInd-unit">
@@ -591,7 +591,7 @@
 		</details>
 
 		<details class="calculator">
-			<summary><strong>LC Resonant Frequency Calculator</strong></summary>
+			<summary><strong>LC Resonant Frequency Calculator \(\omega\)</strong></summary>
 			<p>
 				Equation to calculate the LC resonant frequency:
 				\[\omega = {1 \over \sqrt{L \cdot C}}\]
@@ -600,7 +600,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outLcInductance" name="lc-output" value="lcInd">
-					<label for="outLcInductance">Inductance (L):</label>
+					<label for="outLcInductance">Inductance (\(L\)):</label>
 				</div>
 				<input type="number" id="lcInd" step="any">
 				<select id="lcInd-unit">
@@ -613,7 +613,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outLcCapacitance" name="lc-output" value="lcCap">
-					<label for="outLcCapacitance">Capacitance (C):</label>
+					<label for="outLcCapacitance">Capacitance (\(C\)):</label>
 				</div>
 				<input type="number" id="lcCap" step="any">
 				<select id="lcCap-unit">
@@ -627,7 +627,7 @@
 			<div class="input-group">
 				<div class="toggle-group">
 					<input type="radio" id="outLcFrequency" name="lc-output" value="lcFreq" checked>
-					<label for="outLcFrequency">Frequency (f):</label>
+					<label for="outLcFrequency">Frequency (\(\omega\)):</label>
 				</div>
 				<input type="number" id="lcFreq" step="any">
 				<select id="lcFreq-unit">
@@ -638,6 +638,12 @@
 				</select>
 			</div>
 		</details>
+
+		<h2>
+			<a href="https://electronbunker.ca/eb/Calculators.html" target="_blank" rel="noopener noreferrer">
+				More Calculators for Inductance \(L\)
+			</a>
+		</h2>
 
 		<ul>
 			<li>Inductance of Toroidal Coils</li>
