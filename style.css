@@ -9,7 +9,7 @@ body {
 
 h1 {
   text-align: center;
-  color: #00d4ff;
+  color: #fcfcfc;
   margin-bottom: 1rem;
 }
 
@@ -146,4 +146,85 @@ button:hover {
 	background-color: #0ff;
 	color: #000;
 	border-color: #0ff;
+}
+
+/* ===== Neon color theme per category ===== */
+
+/* 1) Give each tab button its own neon color */
+.tabs .tab-button:nth-child(1) { border-color: #00d4ff; color: #00d4ff; } /* Magnetic */
+.tabs .tab-button:nth-child(2) { border-color: #39ff88; color: #39ff88; } /* Plasma */
+.tabs .tab-button:nth-child(3) { border-color: #ff4fd8; color: #ff4fd8; } /* Heating */
+.tabs .tab-button:nth-child(4) { border-color: #b266ff; color: #b266ff; } /* Instabilities */
+.tabs .tab-button:nth-child(5) { border-color: #4da6ff; color: #4da6ff; } /* Waves */
+.tabs .tab-button:nth-child(6) { border-color: #ffe94d; color: #ffe94d; } /* Diagnostics */
+.tabs .tab-button:nth-child(7) { border-color: #ff9f1c; color: #ff9f1c; } /* Circuits */
+.tabs .tab-button:nth-child(8) { border-color: #ff6b4a; color: #ff6b4a; } /* Thermal */
+.tabs .tab-button:nth-child(9) { border-color: #ff5cff; color: #ff5cff; } /* Advanced */
+
+.tabs .tab-button:nth-child(1):hover { background: #00d4ff; color: #0e0f11; box-shadow: 0 0 12px #00d4ff; }
+.tabs .tab-button:nth-child(2):hover { background: #39ff88; color: #0e0f11; box-shadow: 0 0 12px #39ff88; }
+.tabs .tab-button:nth-child(3):hover { background: #ff4fd8; color: #0e0f11; box-shadow: 0 0 12px #ff4fd8; }
+.tabs .tab-button:nth-child(4):hover { background: #b266ff; color: #0e0f11; box-shadow: 0 0 12px #b266ff; }
+.tabs .tab-button:nth-child(5):hover { background: #4da6ff; color: #0e0f11; box-shadow: 0 0 12px #4da6ff; }
+.tabs .tab-button:nth-child(6):hover { background: #ffe94d; color: #0e0f11; box-shadow: 0 0 12px #ffe94d; }
+.tabs .tab-button:nth-child(7):hover { background: #ff9f1c; color: #0e0f11; box-shadow: 0 0 12px #ff9f1c; }
+.tabs .tab-button:nth-child(8):hover { background: #ff6b4a; color: #0e0f11; box-shadow: 0 0 12px #ff6b4a; }
+.tabs .tab-button:nth-child(9):hover { background: #ff5cff; color: #0e0f11; box-shadow: 0 0 12px #ff5cff; }
+
+/* 2) Set a neon variable for each category section */
+#magnetic      { --neon: #00d4ff; --neon-glow: #00d4ff66; }
+#plasma        { --neon: #39ff88; --neon-glow: #39ff8866; }
+#heating       { --neon: #ff4fd8; --neon-glow: #ff4fd866; }
+#instabilities { --neon: #b266ff; --neon-glow: #b266ff66; }
+#waves         { --neon: #4da6ff; --neon-glow: #4da6ff66; }
+#diagnostics   { --neon: #ffe94d; --neon-glow: #ffe94d66; }
+#circuits      { --neon: #ff9f1c; --neon-glow: #ff9f1c66; }
+#thermal       { --neon: #ff6b4a; --neon-glow: #ff6b4a66; }
+#advanced      { --neon: #ff5cff; --neon-glow: #ff5cff66; }
+
+/* 3) Make each open category panel use its own neon color */
+.tab-content {
+  display: none;
+  background: #181a1f;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--neon, #00d4ff);
+  box-shadow: 0 0 14px var(--neon-glow, #00d4ff55);
+}
+
+/* 4) Category heading color */
+.tab-content h2 {
+  color: var(--neon, #00d4ff);
+  text-shadow: 0 0 8px var(--neon-glow, #00d4ff66);
+}
+
+/* 5) Calculator cards inside each category */
+.tab-content details.calculator {
+  background: #1e1f24;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-left: 4px solid var(--neon, #00d4ff);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px var(--neon-glow, #00d4ff33);
+}
+
+.tab-content details.calculator summary {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--neon, #00d4ff);
+  outline: none;
+}
+
+.tab-content details.calculator[open] {
+  border-left-color: var(--neon, #00d4ff);
+  box-shadow: 0 0 14px var(--neon-glow, #00d4ff66);
+}
+
+/* 6) Radio toggle buttons also match each category color */
+.tab-content .toggle-group input[type="radio"]:checked + label {
+  background-color: var(--neon, #00d4ff);
+  color: #000;
+  border-color: var(--neon, #00d4ff);
+  box-shadow: 0 0 10px var(--neon-glow, #00d4ff66);
 }
